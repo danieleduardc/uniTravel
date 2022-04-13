@@ -1,0 +1,21 @@
+### Java ###
+*.class
+
+# Package Files #
+*.war
+*.ear
+
+### Gradle ###
+# Exclude Fordel List #
+build/
+
+# POT-specific
+.buildpath
+
+### IntelliJ IDEA ###
+*.iml
+*.ipr
+*.iws
+.idea/
+
+/bin
