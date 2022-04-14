@@ -1,73 +1,35 @@
 package co.edu.uniquindio.unitravel.entidades;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+
 
 @Entity
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Persona implements Serializable {
+
     @Id
+    @EqualsAndHashCode.Include
     private String cedula;
+
     private String nombre;
     private String email;
     @ElementCollection
     private Map<String, String> telefonos;
 
-    public Persona() {
-    }
-
     public Persona(String cedula, String nombre, String email) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.email = email;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Map<String, String> getTelefonos() {
-        return telefonos;
-    }
-
-    public void setTelefonos(Map<String, String> telefonos) {
-        this.telefonos = telefonos;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Persona persona = (Persona) o;
-        return Objects.equals(cedula, persona.cedula);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cedula);
     }
 }
