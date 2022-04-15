@@ -4,14 +4,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Future;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -25,7 +23,16 @@ public class Prestamo implements Serializable {
     @EqualsAndHashCode.Include
     private int codigo;
 
+    @Column(nullable = false)
     private LocalDateTime fechaPrestamo;
+
+    @Future
+    @Column(nullable = false)
     private LocalDate fechaDevolucion;
 
+    @ManyToMany
+    private List<Libro> libros;
+
+    @ManyToOne
+    private Usuario usuario;
 }
