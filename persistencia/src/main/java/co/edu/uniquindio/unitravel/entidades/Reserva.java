@@ -4,10 +4,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Prestamo implements Serializable {
+public class Reserva implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,15 +24,32 @@ public class Prestamo implements Serializable {
     private int codigo;
 
     @Column(nullable = false)
-    private LocalDateTime fechaPrestamo;
+    private LocalDateTime fechaReserva;
+
+    @Column(nullable = false)
+    private LocalDateTime fechaInicio;
 
     @Future
     @Column(nullable = false)
-    private LocalDate fechaDevolucion;
+    private LocalDateTime fechaFin;
 
-    @ManyToMany
-    private List<Libro> libros;
+    @Column(nullable = false)
+    private int precioTotal;
+
+    @Column(nullable = false)
+    private String estado;
+
+    @Column(nullable = false)
+    private String cantidadPersonas;
 
     @ManyToOne
-    private Usuario usuario;
+    private Cliente cliente;
+
+    @OneToMany(mappedBy = "reserva")
+    private List<ReservaHabitacion> reservaHabitaciones;
+
+    @OneToMany(mappedBy = "reserva")
+    private List<ReservaSilla> reservaSillas;
+
+
 }
