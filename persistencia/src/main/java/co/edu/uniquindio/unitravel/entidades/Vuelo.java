@@ -29,8 +29,11 @@ public class Vuelo implements Serializable {
     @OneToMany(mappedBy = "vuelo")
     private List<Silla> sillas;
 
-    @ManyToMany
-    private List<Ciudad> ciudades;
+    @ManyToOne
+    private Ciudad ciudadOrigen;
+
+    @ManyToOne
+    private Ciudad ciudadDestino;
 
     public Vuelo(String codigo, String estado, String aerolinea) {
         this.codigo = codigo;

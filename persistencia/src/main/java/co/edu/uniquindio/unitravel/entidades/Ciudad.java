@@ -30,7 +30,10 @@ public class Ciudad implements Serializable {
     @OneToMany(mappedBy = "ciudad")
     private List<Hotel> hoteles;
 
-    @Max(2)
-    @ManyToMany(mappedBy = "ciudades")
-    private List<Vuelo> vuelos;
+    @OneToMany(mappedBy = "ciudadOrigen")
+    private List<Vuelo> vueloOrigen;
+
+    @OneToMany(mappedBy = "ciudadDestino")
+    private List<Vuelo> vueloDestino;
+
 }

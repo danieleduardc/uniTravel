@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.List;
@@ -21,10 +18,12 @@ import java.util.Map;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cliente extends Persona implements Serializable {
 
-    private String codigoCiudad;
+    @Id
+    @EqualsAndHashCode.Include
+    private String cedula;
 
-    @ElementCollection
-    private Map<String, String> telefonos;
+    @OneToMany(mappedBy = "cliente")
+    private List<Telefono> telefonos;
 
     @OneToMany(mappedBy = "cliente")
     private List<Reserva> reservas;
@@ -35,8 +34,11 @@ public class Cliente extends Persona implements Serializable {
     @OneToMany(mappedBy = "cliente")
     private List<Comentario> comentarios;
 
-    public Cliente(String cedula, String nombre, @Email String email, String password, String codigoCiudad) {
+    @Email
+    private String correo;
+
+    public Cliente(String cedula, String nombre, @Email String email, String password, String cedula1) {
         super(cedula, nombre, email, password);
-        this.codigoCiudad = codigoCiudad;
+        this.cedula = cedula1;
     }
 }
