@@ -26,10 +26,10 @@ public class Caracteristica implements Serializable {
     @Column(nullable = false, length = 200)
     private String nombre;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "caracteristicas")
     private List<Hotel> hoteles;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "caracteristicas")
     private List<Habitacion> habitaciones;
 
     public Caracteristica(int codigo, String nombre) {

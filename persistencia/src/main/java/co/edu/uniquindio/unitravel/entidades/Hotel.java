@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.PositiveOrZero;
@@ -14,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Hotel implements Serializable {
 
@@ -40,14 +38,14 @@ public class Hotel implements Serializable {
     @ManyToOne
     private AdministradorHotel administradorHotel;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "hotel")
     private List<Foto> fotos;
 
-    @OneToMany(mappedBy = "hotel")
-    private List<Habitacion> habitaciones;
-
-    @ManyToMany(mappedBy = "hoteles")
+    @ToString.Exclude
+    @ManyToMany
     private List<Caracteristica> caracteristicas;
+
 
     public Hotel(int codigo, String nombre, String direccion, String telefono, int numeroEstrellas) {
         this.codigo = codigo;

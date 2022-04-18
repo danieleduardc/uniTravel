@@ -34,7 +34,7 @@ public class Habitacion implements Serializable {
     @ManyToOne
     private Hotel hotel;
 
-    @ManyToMany(mappedBy = "habitaciones")
+    @ManyToMany
     private List<Caracteristica> caracteristicas;
 
     @ManyToMany(mappedBy = "habitaciones")
