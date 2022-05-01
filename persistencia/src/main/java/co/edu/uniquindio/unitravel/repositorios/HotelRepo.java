@@ -10,9 +10,9 @@ import java.util.List;
 @Repository
 public interface HotelRepo extends JpaRepository<Hotel, Integer> {
 
-    @Query("select h from Hotel h where h.numeroEstrellas = ?1")
-    List<Hotel> buscarPorNumeroEstrellas(int numeroEstrellas);
+    List<Hotel> findAllByNumeroEstrellas(int numeroEstrellas);
+    //    @Query("select h from Hotel h where h.numeroEstrellas = ?1")
+    //    List<Hotel> buscarPorNumeroEstrellas(int numeroEstrellas);
 
-    //List<Hotel> findAllByNumeroEstrellas(int numeroEstrellas);
 }
 

@@ -23,7 +23,7 @@ public class HotelTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void numeroEstrellas(){
-        List<Hotel> hoteles = hotelRepository.buscarPorNumeroEstrellas(5);
+        List<Hotel> hoteles = hotelRepository.findAllByNumeroEstrellas(5);
         hoteles.forEach(System.out::println);
     }
 
