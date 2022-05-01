@@ -24,8 +24,8 @@ public class Ciudad implements Serializable {
     @Column(nullable = false)
     private String nombre;
 
-//    @OneToMany(mappedBy = "ciudad")
-//    private List<Cliente> clientes;
+    @OneToMany(mappedBy = "ciudad")
+    private List<Cliente> clientes;
 
     @OneToMany(mappedBy = "ciudad")
     private List<Hotel> hoteles;

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.List;
 
@@ -25,6 +26,10 @@ public class Cliente extends Persona implements Serializable {
     @OneToMany(mappedBy = "cliente")
     private List<Comentario> comentarios;
 
-//    @ManyToOne
-//    private Ciudad ciudad;
+    @ManyToOne
+    private Ciudad ciudad;
+
+    public Cliente(String cedula, String nombre, @Email String email, String password) {
+        super(cedula, nombre, email, password);
+    }
 }
