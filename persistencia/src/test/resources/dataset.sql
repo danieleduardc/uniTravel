@@ -38,7 +38,7 @@ insert into habitacion_caracteristicas values (2, 2);
 insert into habitacion_caracteristicas values (3, 1);
 
 insert into reserva values (1,"2","confirmada","2022-09-10","2022-09-05","2022-09-01",200000,"123");
-insert into reserva values (2,"3","confirmada","2022-10-07","2022-10-12","2022-09-30",350000,"124");
+insert into reserva values (2,"3","confirmada","2022-10-12","2022-10-05","2022-09-16",350000,"124");
 
 insert into reserva_habitacion values (1, 70000, 1, 1);
 insert into reserva_habitacion values (2, 90000, 3, 2);
@@ -52,4 +52,9 @@ insert into silla values ("2","DR23",230000,"A325");
 insert into reserva_silla values (1, 125000,1,"1");
 insert into reserva_silla values (2, 230000,2,"2");
 
+insert into comentario values (1, 4, "Muy buen hotel", "2022-09-10", "123");
+insert into comentario values (2, 2, "Muy mal hotel", "2022-09-10", "124");
 
+insert into cliente_telefonos values ("123","1234567");
+insert into cliente_telefonos values ("125","1234567");
+insert into cliente_telefonos values ("124","2345678");

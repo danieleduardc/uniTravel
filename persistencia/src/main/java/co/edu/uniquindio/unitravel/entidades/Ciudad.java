@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -14,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Ciudad implements Serializable {
 
@@ -24,15 +22,19 @@ public class Ciudad implements Serializable {
     @Column(nullable = false)
     private String nombre;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "ciudad")
     private List<Cliente> clientes;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "ciudad")
     private List<Hotel> hoteles;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "ciudadOrigen")
     private List<Vuelo> vueloOrigen;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "ciudadDestino")
     private List<Vuelo> vueloDestino;
 

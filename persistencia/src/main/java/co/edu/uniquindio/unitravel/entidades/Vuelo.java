@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Vuelo implements Serializable {
 
@@ -26,6 +24,7 @@ public class Vuelo implements Serializable {
     @Column(nullable = false)
     private String aerolinea;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "vuelo")
     private List<Silla> sillas;
 

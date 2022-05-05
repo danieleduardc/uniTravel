@@ -12,9 +12,13 @@ public interface HotelRepo extends JpaRepository<Hotel, Integer> {
 
     List<Hotel> findAllByNumeroEstrellas(int numeroEstrellas);
 
-    String findByObtenerHotelesCiudad(Integer codigoCiudad);
+    @Query("select h.ciudad.nombre from Hotel h where h.codigo =:codigo")
+    String obtenerNombreCiudadCodigo(Integer codigo);
 
-    List<Hotel> findAllByObtenerHoteles(String nombreCiudad);
+    @Query ("select h from Hotel h where h.ciudad.nombre =:nombreCiudad")
+    List<Hotel> obtenerHotelesCiudad(String nombreCiudad);
+
+
 
 
 }

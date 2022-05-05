@@ -1,6 +1,8 @@
 package co.edu.uniquindio.unitravel;
 
 import co.edu.uniquindio.unitravel.entidades.Cliente;
+import co.edu.uniquindio.unitravel.entidades.Comentario;
+import co.edu.uniquindio.unitravel.entidades.Reserva;
 import co.edu.uniquindio.unitravel.repositorios.ClienteRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -90,4 +92,38 @@ public class ClienteTest {
         clientes.forEach(System.out::println);
     }
 
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarReserva() {
+        List<Reserva> reservas = clienteRepository.obternerReservas("julia@gmail.com");
+        reservas.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarComentarios() {
+        List<Object[]> comentarios = clienteRepository.obtenerComentarios();
+        comentarios.forEach(comentario -> System.out.println(comentario[0] + " -- " + comentario[1]));
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarReservas() {
+        List<Object[]> clientes = clienteRepository.obtenerReservas();
+        clientes.forEach(cliente -> System.out.println(cliente[0] + " -- " + cliente[1]));
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarTelefonos() {
+        List<Cliente> clientes = clienteRepository.obtenerClienteTelefono("1234567");
+        clientes.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarTodosTelefonos() {
+        List<String> telefonos = clienteRepository.obtenerTelefonos();
+        telefonos.forEach(System.out::println);
+    }
 }
