@@ -1,6 +1,5 @@
 package co.edu.uniquindio.unitravel.repositorios;
 
-import co.edu.uniquindio.unitravel.dto.ReservaDTO;
 import co.edu.uniquindio.unitravel.entidades.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

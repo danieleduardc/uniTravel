@@ -20,6 +20,8 @@ public interface ClienteRepo extends JpaRepository<Cliente, String> {
 
     Page<Cliente> findAll(Pageable pageable);
 
+    Optional<Cliente> findByEmail(String email);
+
     @Query("select r from Cliente c, IN (c.reservas) r where c.email = :email")
     List<Reserva> obternerReservas(String email);
 
