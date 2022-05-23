@@ -34,4 +34,24 @@ public class ReservaTest {
         List<Object[]> reservas = reservaRepository.obtenerReservas(1, fecha);
         reservas.forEach(r -> System.out.println(r[0]+" - "+r[1]+" - "+r[2]));
     }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void totalDeReservasCliente(){
+
+        List<Object[]> reservas = reservaRepository.obtenerTotalReservasPorCliente("123");
+        reservas.forEach(r -> System.out.println( r[0]+" - "+r[1]+" - "+r[2] ));
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void detalleReservaCliente(){
+
+        List<Object[]> reservas = reservaRepository.deatallarReservasPorCliente("123");
+        reservas.forEach(r -> System.out.println( r[0]+" - "+r[1]+" - "+r[2] ));
+    }
+
+
+
+
 }

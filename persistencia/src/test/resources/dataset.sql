@@ -39,8 +39,11 @@ insert into habitacion_caracteristicas values (3, 1);
 
 insert into reserva values (1,"2","confirmada","2022-09-10","2022-09-05","2022-09-01",200000,"123");
 insert into reserva values (2,"3","confirmada","2022-10-12","2022-10-05","2022-09-16",350000,"124");
+insert into reserva values (3,"4","confirmada","2022-11-10","2022-11-05","2022-10-01",450000,"123");
 
 insert into reserva_habitacion values (1, 70000, 1, 1);
+insert into reserva_habitacion values (5, 60000, 1, 1);
+insert into reserva_habitacion values (4, 30000, 2, 3);
 insert into reserva_habitacion values (2, 90000, 3, 2);
 
 insert into vuelo values ("A324","avianca","programado", 1,2);

@@ -42,6 +42,14 @@ public class Hotel implements Serializable {
     @OneToMany(mappedBy = "hotel")
     private List<Foto> fotos;
 
+    @OneToMany(mappedBy="hotel")
+    @ToString.Exclude
+    private List<Habitacion>habitaciones;
+
+    @ToString.Exclude
+    @ManyToMany
+    private List<Comentario> comentarios;
+
     @ToString.Exclude
     @ManyToMany
     private List<Caracteristica> caracteristicas;

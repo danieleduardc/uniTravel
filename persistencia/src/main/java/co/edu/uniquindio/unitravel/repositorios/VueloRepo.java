@@ -13,4 +13,11 @@ public interface VueloRepo extends JpaRepository<Vuelo, String> {
     @Query ("select v from Vuelo v where v.ciudadOrigen.nombre = :nombreCiudad")
     List<Vuelo> obtenerVuelos(String nombreCiudad);
 
+
+    @Query("select new co.edu.uniquindio.unitravel.dto.vueloCiudadDTO (v.ciudadOrigen.nombre, count(v) ) from Vuelo v group by v.ciudadOrigen ")
+    List<Vuelo> listaVuelosPorCiudad(String ciudad);
+
+
+
+
 }
