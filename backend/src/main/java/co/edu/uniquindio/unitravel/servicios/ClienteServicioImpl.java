@@ -17,7 +17,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
-    public Cliente registrarUsuario(Cliente u) throws Exception {
+    public Cliente registrarCliente(Cliente u) throws Exception {
         Cliente buscado = obtenerCliente(u.getCedula());
         if (buscado != null) {
             throw new Exception("El usuario ya existe");
@@ -25,7 +25,7 @@ public class ClienteServicioImpl implements ClienteServicio {
 
         Cliente clienteEmail = buscarEmail(u.getEmail());
         if (clienteEmail != null) {
-            throw new Exception("El email ya existe");
+            throw new Exception("El email ya esta registrado");
         }
 
         return clienteRepo.save(u);
@@ -36,7 +36,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
-    public Cliente actualizarusuario(Cliente u) throws Exception {
+    public Cliente actualizarCliente(Cliente u) throws Exception {
         Cliente cliente = obtenerCliente(u.getCedula());
         if (cliente == null) {
             throw new Exception("El usuario no existe");
@@ -50,7 +50,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
-    public void eliminarusuario(String cedula) throws Exception {
+    public void eliminarCliente(String cedula) throws Exception {
         Cliente cliente = obtenerCliente(cedula);
 
         if (cliente == null) {
@@ -60,7 +60,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
-    public List<Cliente> listarusuarios() {
+    public List<Cliente> ListarClientes() {
         return clienteRepo.findAll();
     }
 
@@ -71,7 +71,7 @@ public class ClienteServicioImpl implements ClienteServicio {
         if (cliente.isEmpty()) {
             throw new Exception("los datos son incorrectos");
         }
-        return null;
+        return cliente.get();
     }
 
 }

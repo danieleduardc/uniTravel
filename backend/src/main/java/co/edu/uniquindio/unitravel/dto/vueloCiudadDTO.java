@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unitravel.entidades.dto;
+package co.edu.uniquindio.unitravel.dto;
 
 
 import lombok.AllArgsConstructor;
