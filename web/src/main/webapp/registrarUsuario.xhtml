@@ -12,6 +12,14 @@
     <title>Página de Inicio</title>
 </h:head>
 <h:body>
-    <h1>#{inicioBean.mensaje}</h1>
+    <h:form>
+    <h:panelGrid columns="2" cellpadding="5">
+        <p:outputLabel for="nombre_cliente" value="Nombre:" />
+        <p:inputText id="nombre_cliente" value="#{clienteBean.cliente.nombre}" />
+        <p:outputLabel for="email_cliente" value="Email:" />
+        <p:inputText id="email_cliente" value="#{clienteBean.cliente.email}" />
+    </h:panelGrid>
+    <p:commandButton action="#{clienteBean.registraCliente()}" value="Registrar" update="@form" />
+</h:form>
 </h:body>
 </html>
