@@ -2,6 +2,7 @@ package co.edu.uniquindio.unitravel;
 
 import co.edu.uniquindio.unitravel.entidades.Cliente;
 import co.edu.uniquindio.unitravel.servicios.ClienteServicio;
+import co.edu.uniquindio.unitravel.servicios.EmailServices;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class ClienteServicioTest {
 
     @Autowired
     private ClienteServicio clienteServicio;
+
+    @Autowired
+    private EmailServices emailServices;
 
     @Test
     @Sql({"classpath:dataset.sql"})
@@ -88,6 +92,15 @@ public class ClienteServicioTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    @Test
+    @Sql({"classpath:dataset.sql"})
+    public void enviarCorreoTest() {
+
+        boolean estado = emailServices.enviarEmail("daniele.puertah@uqvirtual.edu.co","es una prueba","hola mundo");
+
     }
 
 }

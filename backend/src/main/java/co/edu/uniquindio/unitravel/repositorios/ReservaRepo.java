@@ -22,5 +22,8 @@ public interface ReservaRepo extends JpaRepository<Reserva, Integer> {
 
 
     @Query("select r, rh ,rs from Reserva r join r.reservaHabitaciones rh left join r.reservaSillas rs where r.cliente.cedula = :cedula")
-    List<Object[]> deatallarReservasPorCliente(String cedula);
+    List<Object[]> detallarReservasPorCliente(String cedula);
+
+    @Query("select r, rh ,rs from Reserva r join r.reservaHabitaciones rh left join r.reservaSillas rs where r.cliente.email = :email")
+    List<Object[]> obtenerReservaClienteEmail(String email);
 }

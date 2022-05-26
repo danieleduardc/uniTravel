@@ -18,17 +18,33 @@ public interface ClienteServicio {
 
         Cliente validarLogin(String email, String password)throws Exception;
 
+        Hotel obtenerHotel(String hotel);
+
+        Reserva registrarReserva(Reserva reserva)throws Exception;
+
+        List<Object[]> listarReservas(String cedula);
+
+        Reserva obtenerReserva(Integer codigo);
+
+        Reserva actualizarReserva(Reserva reserva)throws Exception;
+
+        void eliminarReserva(Integer codigo)throws Exception;
+
+        List<Hotel> BuscarHotelesPorCiudad(String ciudad);
+
         Comentario registrarComentario(Comentario comentario)throws Exception;
 
-        Reserva registrarReserva(Reserva reserva, Vuelo vuelos, Habitacion habitacion)throws Exception;
+        Comentario actualizarComentario(Comentario comentario)throws Exception;
 
-        List<Hotel> ListarHotelesCiudad(String nombreCiudad);
+        Comentario calificarHotel(Comentario comentario)throws Exception;
+
+        void RestablecerPassword(String email)throws Exception;
 
         List<Habitacion> ListarHabitacionesHotel(String nombreHotel);
 
         List<Vuelo> ListarVuelosCiudad(String nombreCiudad);
 
-        
+
 
 
 
