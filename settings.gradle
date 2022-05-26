@@ -1,4 +1,5 @@
 rootProject.name = 'unitravel'
 include 'backend'
 include 'web'
+include 'web'
 
