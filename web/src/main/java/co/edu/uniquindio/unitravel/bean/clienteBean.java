@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 
+
 @Component
 @ViewScoped
 public class clienteBean implements Serializable {
@@ -27,21 +28,18 @@ public class clienteBean implements Serializable {
     public void init(){
         cliente = new Cliente();
     }
-    public void registraCliente(){
+
+    public void registrarCliente(){
         try {
             clienteServicio.registrarCliente(cliente);
 
-            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta",
-                    "Registro exitoso");
+            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Registro exitoso");
             FacesContext.getCurrentInstance().addMessage(null, facesMsg);
 
         } catch (Exception e) {
-            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta",
-                    e.getMessage());
+            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, facesMsg);
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
-
-
 }
