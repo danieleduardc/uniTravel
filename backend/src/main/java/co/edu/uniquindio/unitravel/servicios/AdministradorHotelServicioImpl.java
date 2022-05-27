@@ -1,10 +1,13 @@
 package co.edu.uniquindio.unitravel.servicios;
 
 import co.edu.uniquindio.unitravel.entidades.AdministradorHotel;
+import co.edu.uniquindio.unitravel.entidades.Ciudad;
 import co.edu.uniquindio.unitravel.entidades.Habitacion;
 import co.edu.uniquindio.unitravel.entidades.Hotel;
 import co.edu.uniquindio.unitravel.repositorios.AdminHotelRepo;
+import co.edu.uniquindio.unitravel.repositorios.CiudadRepo;
 import co.edu.uniquindio.unitravel.repositorios.HabitacionRepo;
+import co.edu.uniquindio.unitravel.repositorios.HotelRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +19,13 @@ public class AdministradorHotelServicioImpl implements  AdministradorHotelServic
 
     @Autowired
     private AdminHotelRepo adminHotelRepo;
+    @Autowired
     private HabitacionRepo habitacionRepo;
+    @Autowired
+    private CiudadRepo ciudadRepo;
+
+    @Autowired
+    private HotelRepo hotelRepo;
 
     @Override
     public AdministradorHotel validarLoginHotel(String email, String password) throws Exception {
@@ -25,7 +34,7 @@ public class AdministradorHotelServicioImpl implements  AdministradorHotelServic
 
     @Override
     public Hotel crearHotel(Hotel hotel) throws Exception {
-        return null;
+        return hotelRepo.save(hotel);
     }
 
     @Override
@@ -67,5 +76,20 @@ public class AdministradorHotelServicioImpl implements  AdministradorHotelServic
     @Override
     public List<Habitacion> listarHabitaciones(Integer codigoHotel) throws Exception {
         return habitacionRepo.listarhabitacionesHotel(codigoHotel);
+    }
+
+    @Override
+    public Hotel obtenerHotel(Integer codigoHotel) throws Exception {
+        return null;
+    }
+
+    @Override
+    public Ciudad obtenerCiudad(Integer codigoCiudad) throws Exception {
+        return ciudadRepo.findById(codigoCiudad).orElse(null);
+    }
+
+    @Override
+    public AdministradorHotel obtenerAdministrador(String codigoAdmin) throws Exception {
+        return adminHotelRepo.findById(codigoAdmin).orElse(null);
     }
 }

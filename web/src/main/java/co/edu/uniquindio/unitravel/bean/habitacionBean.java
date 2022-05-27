@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unitravel.bean;
 
 import co.edu.uniquindio.unitravel.entidades.Habitacion;
+import co.edu.uniquindio.unitravel.entidades.Hotel;
 import co.edu.uniquindio.unitravel.servicios.AdministradorHotelServicio;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +32,11 @@ public class habitacionBean implements Serializable {
 
     public void registrarHabitacion(){
         try {
+
+            Hotel hotel = administradorHotelServicio.obtenerHotel(1);
+
+            habitacion.setHotel(hotel);
+
             administradorHotelServicio.crearHabitacion(habitacion);
 
             FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Registro exitoso");

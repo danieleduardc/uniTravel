@@ -30,6 +30,9 @@ public interface ClienteServicio {
 
         void eliminarReserva(Integer codigo)throws Exception;
 
+        List<Hotel> buscarHotelesPorNombre(String nombre);
+
+
         List<Hotel> BuscarHotelesPorCiudad(String ciudad);
 
         Comentario registrarComentario(Comentario comentario)throws Exception;

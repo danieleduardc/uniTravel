@@ -134,9 +134,16 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
+    public List<Hotel> buscarHotelesPorNombre(String nombre) {
+        return hotelRepo.listarHotelesPorNombre(nombre);
+    }
+
+    @Override
     public List<Hotel> BuscarHotelesPorCiudad(String ciudad) {
         return hotelRepo.listarHotelesPorCiudad(ciudad);
     }
+
+
 
     @Override
     public Comentario registrarComentario(Comentario comentario) throws Exception {
