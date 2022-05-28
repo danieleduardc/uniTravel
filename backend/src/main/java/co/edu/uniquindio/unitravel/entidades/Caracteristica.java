@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,7 +18,11 @@ public class Caracteristica implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
+
+    @Column(nullable = false, length = 2)
+    private String tipo;
 
     @Column(nullable = false, length = 200)
     private String nombre;

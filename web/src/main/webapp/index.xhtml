@@ -17,44 +17,44 @@
 <h:body>
 
     <div id="encabezado">
-        <header>
-            <div class="px-3 py-2 bg-dark text-white">
+        <div>
+            <div class="px-3 py-2 color-pricipal text-white">
                 <div class="container">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                            <h:graphicImage library="img" name="icon.png" styleClass="icono-p" />
+                            <h:graphicImage library="img" name="icon.png" styleClass="icon-p" />
                             <span class="fs-4">Unitravel</span>
                         </a>
 
                         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                             <li>
-                                <a href="/" class="nav-link text-secondary">
+                                <a href="/" class="nav-link text-active">
                                     <i class="pi pi-home d-block mx-auto mb-1 icon-menu" ></i>
-                                    Home
+                                    Inicio
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link text-white">
+                                <a href="crearHotel.xhtml" class="nav-link text-white">
                                     <i class="pi pi-plus d-block mx-auto mb-1 icon-menu" ></i>
-                                    Dashboard
+                                    Crear Hotel
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link text-white">
+                                <a href="misReservas.xhtml" class="nav-link text-white">
                                     <i class="pi pi-book d-block mx-auto mb-1 icon-menu" ></i>
-                                    Orders
+                                    Reservas
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link text-white">
+                                <a href="hotelesDestino.xhtml" class="nav-link text-white">
                                     <i class="pi pi-list d-block mx-auto mb-1 icon-menu" ></i>
-                                    Products
+                                    Hoteles
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link text-white">
+                                <a href="registrarCliente.xhtml" class="nav-link text-white">
                                     <i class="pi pi-user d-block mx-auto mb-1 icon-menu" ></i>
-                                    Customers
+                                    Usuarios
                                 </a>
                             </li>
                         </ul>
@@ -63,35 +63,42 @@
             </div>
             <div class="px-3 py-2 border-bottom mb-3">
                 <div class="container d-flex flex-wrap justify-content-center">
-                    <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
-                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
-                    </form>
-
+                    <h:form id="busqueda_h" styleClass="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+                        <div class="input-search ui-inputgroup">
+                            <p:inputText placeholder="¿Qué Hotel está buscando?" required="true" value="#{busquedaBean.busqueda}" />
+                            <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}" />
+                        </div>
+                    </h:form>
                     <div class="text-end">
-                        <button type="button" class="btn btn-light text-dark me-2">Login</button>
-                        <button type="button" class="btn btn-primary">Sign-up</button>
+                        <h:form>
+                            <button type="button" class="btn btn-light text-dark me-2">Login</button>
+                            <p:commandButton value="Registrarse" class="btn btn-primary" action="#{inicioBean.irRegistro()}" />
+                        </h:form>
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
     </div>
 
     <div id="contenido">
-        <h:form>
-            <div class="input-search ui-inputgroup">
-                <p:inputText placeholder="¿Qué Hotel está buscando?" required="true" value="#{busquedaBean.busqueda}" />
-                <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}" />
-
-            </div>
-        </h:form>
-
-        <p>Lista de ciudades</p>
-        <p>Recomendados hoteles</p>
+        <div class="fondo-c p-5">
+            <p>Lista de ciudades</p>
+            <p>Recomendados hoteles</p>
+        </div>
     </div>
 
-    <div id="pie_pagina">
-        <p>Unitravel - uniquindio - 2022</p>
+    <div class="pie_pagina p-lg-4">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <span class="text-muted">&copy; 2022 Unitravel, Inc</span>
+                </div>
 
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3"><a class="text-muted" href="#"><i class="pi pi-twitter icon-menu"></i></a></li>
+                    <li class="ms-3"><a class="text-muted" href="#"><i class="pi pi-instagram icon-menu"></i></a></li>
+                    <li class="ms-3"><a class="text-muted" href="#"><i class="pi pi-facebook icon-menu"></i></a></li>
+                </ul>
+            </footer>
     </div>
 
 </h:body>

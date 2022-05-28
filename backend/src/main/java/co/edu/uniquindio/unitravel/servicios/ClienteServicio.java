@@ -16,8 +16,6 @@ public interface ClienteServicio {
 
         List<Cliente> ListarClientes();
 
-        Cliente validarLogin(String email, String password)throws Exception;
-
         Hotel obtenerHotel(String hotel);
 
         Reserva registrarReserva(Reserva reserva)throws Exception;
@@ -46,6 +44,7 @@ public interface ClienteServicio {
         List<Habitacion> ListarHabitacionesHotel(String nombreHotel);
 
         List<Vuelo> ListarVuelosCiudad(String nombreCiudad);
+
 
 
 

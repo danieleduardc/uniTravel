@@ -1,10 +1,7 @@
 package co.edu.uniquindio.unitravel.servicios;
 
 import co.edu.uniquindio.unitravel.entidades.*;
-import co.edu.uniquindio.unitravel.repositorios.ClienteRepo;
-import co.edu.uniquindio.unitravel.repositorios.ComentarioRepo;
-import co.edu.uniquindio.unitravel.repositorios.HotelRepo;
-import co.edu.uniquindio.unitravel.repositorios.ReservaRepo;
+import co.edu.uniquindio.unitravel.repositorios.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +15,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     private ReservaRepo reservaRepo;
     private HotelRepo hotelRepo;
     private EmailServices emailServices;
+
 
     private ClienteServicioImpl(ClienteRepo clienteRepo, ComentarioRepo comentarioRepo, ReservaRepo reservaRepo,
                                 HotelRepo hotelRepo, EmailServices emailServices) {
@@ -76,15 +74,7 @@ public class ClienteServicioImpl implements ClienteServicio {
         return clienteRepo.findAll();
     }
 
-    @Override
-    public Cliente validarLogin(String email, String password) throws Exception {
-        Optional<Cliente> cliente = clienteRepo.findByEmailAndPassword(email, password);
 
-        if (cliente.isEmpty()) {
-            throw new Exception("los datos son incorrectos");
-        }
-        return cliente.get();
-    }
 
     @Override
     public Hotel obtenerHotel(String hotel) {

@@ -33,6 +33,5 @@ public interface AdministradorHotelServicio {
 
     AdministradorHotel obtenerAdministrador(String codigoAdmin) throws Exception;
 
-
-
+    List<Ciudad> ListarCiudades();
 }

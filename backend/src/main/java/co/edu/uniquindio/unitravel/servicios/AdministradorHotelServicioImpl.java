@@ -23,7 +23,6 @@ public class AdministradorHotelServicioImpl implements  AdministradorHotelServic
     private HabitacionRepo habitacionRepo;
     @Autowired
     private CiudadRepo ciudadRepo;
-
     @Autowired
     private HotelRepo hotelRepo;
 
@@ -91,5 +90,10 @@ public class AdministradorHotelServicioImpl implements  AdministradorHotelServic
     @Override
     public AdministradorHotel obtenerAdministrador(String codigoAdmin) throws Exception {
         return adminHotelRepo.findById(codigoAdmin).orElse(null);
+    }
+
+    @Override
+    public List<Ciudad> ListarCiudades() {
+        return ciudadRepo.findAll();
     }
 }

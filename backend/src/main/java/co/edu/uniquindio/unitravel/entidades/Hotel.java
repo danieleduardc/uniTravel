@@ -29,6 +29,9 @@ public class Hotel implements Serializable {
     @Column(nullable = false, length = 50)
     private String telefono;
 
+    @ElementCollection
+    private List<String> fotos;
+
     @PositiveOrZero
     @Column(nullable = false)
     private int numeroEstrellas;
@@ -38,10 +41,6 @@ public class Hotel implements Serializable {
 
     @ManyToOne
     private AdministradorHotel administradorHotel;
-
-    @ToString.Exclude
-    @OneToMany(mappedBy = "hotel")
-    private List<Foto> fotos;
 
     @OneToMany(mappedBy="hotel")
     @ToString.Exclude
@@ -63,4 +62,5 @@ public class Hotel implements Serializable {
         this.telefono = telefono;
         this.numeroEstrellas = numeroEstrellas;
     }
+
 }

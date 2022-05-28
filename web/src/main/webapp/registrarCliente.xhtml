@@ -9,7 +9,7 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Unitravel | Registrar Usuario</title>
+    <title>Unitravel | Registrar Cliente</title>
 </h:head>
 <h:body>
 
@@ -25,6 +25,14 @@
 
                 <p:outputLabel for="email_c" value="Email:" />
                 <p:inputText id="email_c" type="email" value="#{clienteBean.cliente.email}" required="true"/>
+
+                <p:outputLabel for="ciudad_c" value="Ciudad: "/>
+                <p:selectOneMenu id="ciudad_c" value="#{clienteBean.cliente.ciudad}" required="true" converter="#{ciudadConverter}">
+                    required="true" requiredMessage="La ciudad es obligatoria" >
+                    <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true" />
+                    <f:selectItems value="#{clienteBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}" />
+                </p:selectOneMenu>
+
 
                 <p:outputLabel for="passw" value="password: "/>
                 <p:password id="passw" value="#{clienteBean.cliente.password}" feedback="true" required="true"/>

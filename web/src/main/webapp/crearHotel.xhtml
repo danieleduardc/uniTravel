@@ -31,15 +31,41 @@
                 <p:outputLabel for="numeroEstrellas" value="NumeroEstrellas: " />
                 <p:inputText id="numeroEstrellas" type="text" value="#{hotelBean.hotel.numeroEstrellas}" required="true"/>
 
+                <p:outputLabel for="ciudad_h" value="Ciudad: "/>
+                <p:selectOneMenu id="ciudad_h" value="#{hotelBean.hotel.ciudad}" required="true" converter="#{ciudadConverter}">
+                    required="true" requiredMessage="La ciudad es obligatoria" >
+                    <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true" />
+                    <f:selectItems value="#{hotelBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="imagenes_hotel" value="Imagenes:" />
+                <p:fileUpload id="imagenes_hotel"
+                              listener="#{hotelBean.subirImagenes}" mode="advanced"
+                              multiple="true" sizeLimit="1000000" fileLimit="5"
+                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" />
+
+                <p:outputLabel for="caracte" value="Caracteristicas: "/>
+                <p:selectManyCheckbox id="caracte" value="#{hotelBean.hotel.caracteristicas}" required="true" converter="#{caractericasConverter}">
+                    <f:selectItems value="#{hotelBean.caracteristicas}" var="caracterisca" itemLabel="#{caracterisca.nombre}" itemValue="#{caracterisca}" />
+                </p:selectManyCheckbox>
+
+
             </h:panelGrid>
 
             <p:growl showDetail="true" />
-
-           <p:commandButton value="Crear  Hotel" action="#{hotelBean.RegistrarHotel()}" update="@form" icon="pi pi-plus"/>
+            <p:commandButton value="Adiccionar Habitacion" onclick="PF('crear_habi').show()" action="#{hotelBean.RegistrarHotel()}" icon="pi pi-plus-circle"/>
+            <br/> <br/>
+            <p:commandButton value="Crear  Hotel" action="#{hotelBean.RegistrarHotel()}" update="@form" icon="pi pi-check-circle"/>
 
         </h:form>
 
     </p:panel>
+
+    <p:dialog header="Crear habitacion" widgetVar="crear_habi" modal="true" minHeight="40" width="350" showEffect="fade" draggable="false">
+        <h:form>
+            <h1>aqui va el fomulario</h1>
+        </h:form>
+    </p:dialog>
 
 </h:body>
 </html>
