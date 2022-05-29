@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unitravel.servicios;
 
+import co.edu.uniquindio.unitravel.entidades.Cama;
 import co.edu.uniquindio.unitravel.entidades.Caracteristica;
 import co.edu.uniquindio.unitravel.entidades.Ciudad;
 import co.edu.uniquindio.unitravel.entidades.Cliente;
@@ -19,6 +20,11 @@ public interface UnitravelServicio {
     List<Caracteristica> listarCaracteristicasHotel();
 
     List<Caracteristica> listarCaracteristicasHabitacion();
+
+    Cama obtenerCamaId(int parseInt) throws Exception;
+
+    List<Cama> listarCamas();
+
 
 
 }

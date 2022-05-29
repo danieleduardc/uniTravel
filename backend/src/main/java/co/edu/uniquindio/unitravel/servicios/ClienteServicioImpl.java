@@ -183,4 +183,9 @@ public class ClienteServicioImpl implements ClienteServicio {
         return null;
     }
 
+    @Override
+    public List<Hotel> listarHoteles() {
+        return hotelRepo.findAll();
+    }
+
 }

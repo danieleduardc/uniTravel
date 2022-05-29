@@ -1,8 +1,10 @@
 package co.edu.uniquindio.unitravel.servicios;
 
+import co.edu.uniquindio.unitravel.entidades.Cama;
 import co.edu.uniquindio.unitravel.entidades.Caracteristica;
 import co.edu.uniquindio.unitravel.entidades.Ciudad;
 import co.edu.uniquindio.unitravel.entidades.Cliente;
+import co.edu.uniquindio.unitravel.repositorios.CamaRepo;
 import co.edu.uniquindio.unitravel.repositorios.CaracteristicaRepo;
 import co.edu.uniquindio.unitravel.repositorios.CiudadRepo;
 import co.edu.uniquindio.unitravel.repositorios.ClienteRepo;
@@ -21,6 +23,8 @@ public class UnitravelServicioImpl implements UnitravelServicio {
     private ClienteRepo clienteRepo;
     @Autowired
     private CaracteristicaRepo caracteristicaRepo;
+    @Autowired
+    private CamaRepo camaRepo;
 
     @Override
     public List<Ciudad> ListarCiudades() {
@@ -55,6 +59,16 @@ public class UnitravelServicioImpl implements UnitravelServicio {
     @Override
     public List<Caracteristica> listarCaracteristicasHabitacion() {
         return caracteristicaRepo.findAllByTipo("2");
+    }
+
+    @Override
+    public Cama obtenerCamaId(int id) throws Exception {
+        return camaRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Cama> listarCamas() {
+        return camaRepo.findAll();
     }
 
 

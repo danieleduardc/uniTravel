@@ -45,7 +45,7 @@ public interface ClienteServicio {
 
         List<Vuelo> ListarVuelosCiudad(String nombreCiudad);
 
-
+        List<Hotel> listarHoteles();
 
 
 

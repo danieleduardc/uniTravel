@@ -40,18 +40,17 @@
 
                 <p:outputLabel for="imagenes_hotel" value="Imagenes:" />
                 <p:fileUpload id="imagenes_hotel"
-                              listener="#{hotelBean.subirImagenes}" mode="advanced"
+                              listener="#{hotelBean.subirImagenesHotel}" mode="advanced"
                               multiple="true" sizeLimit="1000000" fileLimit="5"
                               allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" />
 
-                <p:outputLabel for="caracte" value="Caracteristicas: "/>
-                <p:selectManyCheckbox id="caracte" value="#{hotelBean.hotel.caracteristicas}" required="true" converter="#{caractericasConverter}">
-                    <f:selectItems value="#{hotelBean.caracteristicas}" var="caracterisca" itemLabel="#{caracterisca.nombre}" itemValue="#{caracterisca}" />
+                <p:outputLabel for="caracte_h" value="Caracteristicas: "/>
+                <p:selectManyCheckbox id="caracte_h" value="#{hotelBean.hotel.caracteristicas}" required="true" converter="#{caractericasConverter}">
+                    <f:selectItems value="#{hotelBean.caracteristicasHotel}" var="caracterisca" itemLabel="#{caracterisca.nombre}" itemValue="#{caracterisca}" />
                 </p:selectManyCheckbox>
 
-
             </h:panelGrid>
-
+            <br/> <br/>
             <p:growl showDetail="true" />
             <p:commandButton value="Adiccionar Habitacion" onclick="PF('crear_habi').show()" action="#{hotelBean.RegistrarHotel()}" icon="pi pi-plus-circle"/>
             <br/> <br/>
@@ -61,9 +60,38 @@
 
     </p:panel>
 
-    <p:dialog header="Crear habitacion" widgetVar="crear_habi" modal="true" minHeight="40" width="350" showEffect="fade" draggable="false">
+    <p:dialog header="Crear habitacion" widgetVar="crear_habi" modal="true" showEffect="fade" draggable="false">
         <h:form>
-            <h1>aqui va el fomulario</h1>
+            <h:panelGrid columns="2" cellpadding="5">
+
+                <p:outputLabel for="numero_hab" value="Numero Habitacion: " />
+                <p:inputText id="numero_hab" type="text" value="#{hotelBean.habitacion.numero}" required="true"/>
+
+                <p:outputLabel for="precio" value="Precio Habitacion: " />
+                <p:inputText id="precio" type="text" value="#{hotelBean.habitacion.precio}" required="true"/>
+
+                <p:outputLabel for="capacidad" value="Capacidad: " />
+                <p:inputText id="capacidad" type="text" value="#{hotelBean.habitacion.capacidad}" required="true"/>
+
+                <p:outputLabel for="camas" value="Camas: "/>
+                <p:selectManyCheckbox id="camas" value="#{hotelBean.habitacion.camas}" required="true" converter="#{camaConverter}">
+                    <f:selectItems value="#{hotelBean.camas}" var="cama" itemLabel="#{cama.tipo}" itemValue="#{cama}" />
+                </p:selectManyCheckbox>
+
+                <p:outputLabel for="caracte_habi" value="Caracteristicas: "/>
+                <p:selectManyCheckbox id="caracte_habi" value="#{hotelBean.habitacion.caracteristicas}" required="true" converter="#{caractericasConverter}">
+                    <f:selectItems value="#{hotelBean.caracteristicasHabitacion}" var="caracterisca" itemLabel="#{caracterisca.nombre}" itemValue="#{caracterisca}" />
+                </p:selectManyCheckbox>
+
+                <p:outputLabel for="imagenes_habi" value="Imagenes:" />
+                <p:fileUpload id="imagenes_habi"
+                              listener="#{hotelBean.subirImagenesHabitacion}" mode="advanced"
+                              multiple="true" sizeLimit="1000000" fileLimit="5"
+                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" />
+
+            </h:panelGrid>
+            <br/> <br/>
+            <p:commandButton value="Crear  Habitacion" action="#{hotelBean.crearHabitacion()}" update="@form" icon="pi pi-check-circle"/>
         </h:form>
     </p:dialog>
 

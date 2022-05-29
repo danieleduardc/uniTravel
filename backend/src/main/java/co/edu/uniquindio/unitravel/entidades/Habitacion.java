@@ -28,20 +28,20 @@ public class Habitacion implements Serializable {
     @PositiveOrZero
     private int capacidad;
 
-    @ToString.Exclude
     @ElementCollection
     private List<String> fotos;
 
     @ManyToOne
     private Hotel hotel;
 
+    @ToString.Exclude
     @ManyToMany
     private List<Caracteristica> caracteristicas;
 
     @ManyToMany(mappedBy = "habitaciones")
     private List<Cama> camas;
 
-
+    @ToString.Exclude
     @OneToMany(mappedBy = "habitacion")
     private List<ReservaHabitacion> reservaHabitaciones;
 
