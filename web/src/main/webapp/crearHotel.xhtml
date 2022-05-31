@@ -31,6 +31,9 @@
                 <p:outputLabel for="numeroEstrellas" value="NumeroEstrellas: " />
                 <p:inputText id="numeroEstrellas" type="text" value="#{hotelBean.hotel.numeroEstrellas}" required="true"/>
 
+                <p:outputLabel for="descripcion" value="Descripcion: " />
+                <p:inputTextarea id="descripcion" type="text" value="#{hotelBean.hotel.descripcion}" required="true"/>
+
                 <p:outputLabel for="ciudad_h" value="Ciudad: "/>
                 <p:selectOneMenu id="ciudad_h" value="#{hotelBean.hotel.ciudad}" required="true" converter="#{ciudadConverter}">
                     required="true" requiredMessage="La ciudad es obligatoria" >

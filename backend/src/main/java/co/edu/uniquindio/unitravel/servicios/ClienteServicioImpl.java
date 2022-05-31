@@ -17,6 +17,8 @@ public class ClienteServicioImpl implements ClienteServicio {
     private EmailServices emailServices;
 
 
+
+
     private ClienteServicioImpl(ClienteRepo clienteRepo, ComentarioRepo comentarioRepo, ReservaRepo reservaRepo,
                                 HotelRepo hotelRepo, EmailServices emailServices) {
         this.clienteRepo = clienteRepo;
@@ -187,5 +189,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     public List<Hotel> listarHoteles() {
         return hotelRepo.findAll();
     }
+
+
 
 }

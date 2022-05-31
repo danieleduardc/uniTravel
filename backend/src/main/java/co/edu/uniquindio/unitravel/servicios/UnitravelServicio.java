@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unitravel.servicios;
 
-import co.edu.uniquindio.unitravel.entidades.Cama;
-import co.edu.uniquindio.unitravel.entidades.Caracteristica;
-import co.edu.uniquindio.unitravel.entidades.Ciudad;
-import co.edu.uniquindio.unitravel.entidades.Cliente;
+import co.edu.uniquindio.unitravel.entidades.*;
 
 import java.util.List;
 
@@ -25,6 +22,7 @@ public interface UnitravelServicio {
 
     List<Cama> listarCamas();
 
+    Hotel obtenerHotel(Integer codigoHotel) throws Exception;
 
 
 }

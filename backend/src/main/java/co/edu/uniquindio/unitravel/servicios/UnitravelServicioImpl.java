@@ -1,13 +1,7 @@
 package co.edu.uniquindio.unitravel.servicios;
 
-import co.edu.uniquindio.unitravel.entidades.Cama;
-import co.edu.uniquindio.unitravel.entidades.Caracteristica;
-import co.edu.uniquindio.unitravel.entidades.Ciudad;
-import co.edu.uniquindio.unitravel.entidades.Cliente;
-import co.edu.uniquindio.unitravel.repositorios.CamaRepo;
-import co.edu.uniquindio.unitravel.repositorios.CaracteristicaRepo;
-import co.edu.uniquindio.unitravel.repositorios.CiudadRepo;
-import co.edu.uniquindio.unitravel.repositorios.ClienteRepo;
+import co.edu.uniquindio.unitravel.entidades.*;
+import co.edu.uniquindio.unitravel.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +19,8 @@ public class UnitravelServicioImpl implements UnitravelServicio {
     private CaracteristicaRepo caracteristicaRepo;
     @Autowired
     private CamaRepo camaRepo;
+    @Autowired
+    private HotelRepo hotelRepo;
 
     @Override
     public List<Ciudad> ListarCiudades() {
@@ -71,5 +67,10 @@ public class UnitravelServicioImpl implements UnitravelServicio {
         return camaRepo.findAll();
     }
 
+    @Override
+    public Hotel obtenerHotel(Integer codigoHotel) throws Exception {
+        return hotelRepo.findById(codigoHotel).orElseThrow(() -> new Exception("Hotel no encontrado"));
+
+    }
 
 }
