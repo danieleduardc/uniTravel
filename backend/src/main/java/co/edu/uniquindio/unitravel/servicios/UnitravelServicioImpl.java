@@ -5,6 +5,7 @@ import co.edu.uniquindio.unitravel.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,9 @@ public class UnitravelServicioImpl implements UnitravelServicio {
     private CamaRepo camaRepo;
     @Autowired
     private HotelRepo hotelRepo;
+
+    @Autowired
+    private ComentarioRepo comentarioRepo;
 
     @Override
     public List<Ciudad> ListarCiudades() {
@@ -71,6 +75,12 @@ public class UnitravelServicioImpl implements UnitravelServicio {
     public Hotel obtenerHotel(Integer codigoHotel) throws Exception {
         return hotelRepo.findById(codigoHotel).orElseThrow(() -> new Exception("Hotel no encontrado"));
 
+    }
+
+    @Override
+    public void crearComentario(Comentario comentario) throws Exception {
+        comentario.setFechaCalificacion(LocalDateTime.now());
+        comentarioRepo.save(comentario);
     }
 
 }

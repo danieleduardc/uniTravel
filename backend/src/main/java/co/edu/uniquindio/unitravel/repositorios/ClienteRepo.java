@@ -25,7 +25,7 @@ public interface ClienteRepo extends JpaRepository<Cliente, String> {
     @Query("select r from Cliente c, IN (c.reservas) r where c.email = :email")
     List<Reserva> obternerReservas(String email);
 
-    @Query("select c.email, co.comentario from Cliente c left join c.comentarios co")
+    @Query("select c.email, c.comentarios from Cliente c left join c.comentarios co")
     List<Object[]> obtenerComentarios();
 
     @Query("select c,r from Cliente c left join c.reservas r")

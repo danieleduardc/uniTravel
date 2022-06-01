@@ -34,10 +34,9 @@
   height: 200px;
 }
 
-.item-ciudad{
+.item-ciudad {
   text-align: center;
-  background-color: #6610f2;
-
+  border-color: #0a53be;
 }
 
 /*body .ui-dataview .ui-dataview-content{*/

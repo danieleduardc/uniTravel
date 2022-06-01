@@ -24,5 +24,6 @@ public interface UnitravelServicio {
 
     Hotel obtenerHotel(Integer codigoHotel) throws Exception;
 
+    void crearComentario(Comentario comentario) throws Exception;
 
 }

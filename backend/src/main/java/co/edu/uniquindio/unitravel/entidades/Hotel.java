@@ -53,12 +53,13 @@ public class Hotel implements Serializable {
     private List<Habitacion>habitaciones;
 
     @ToString.Exclude
-    @ManyToMany
+    @OneToMany(mappedBy = "hotel")
     private List<Comentario> comentarios;
 
     @ToString.Exclude
     @ManyToMany
-    private List<Caracteristica> caracteristicas;;
+    private List<Caracteristica> caracteristicas;
+
 
 
     public Hotel(int codigo, String nombre, String direccion, String telefono, int numeroEstrellas) {
@@ -70,10 +71,10 @@ public class Hotel implements Serializable {
     }
 
     public String getImagenPrincipal(){
-        if(fotos != null && !fotos.isEmpty() ){
+        if(fotos != null && !fotos.isEmpty()){
             return fotos.get(0);
         }
-        return "default.png";
+        return "default.jpg";
     }
 
 
