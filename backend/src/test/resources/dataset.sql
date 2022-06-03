@@ -28,10 +28,10 @@ insert into cama_habitaciones values (2, 1);
 insert into cama_habitaciones values (3, 2);
 insert into cama_habitaciones values (4, 2);
 
-insert into caracteristica values (1, "wifi");
-insert into caracteristica values (2, "aire acondicionado");
-insert into caracteristica values (3, "tv");
-insert into caracteristica values (4, "cocina");
+insert into caracteristica values (1, "wifi", "1");
+insert into caracteristica values (2, "aire acondicionado", "1");
+insert into caracteristica values (3, "tv","2");
+insert into caracteristica values (4, "cocina", "2");
 
 insert into habitacion_caracteristicas values (1, 1);
 insert into habitacion_caracteristicas values (2, 2);

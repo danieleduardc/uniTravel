@@ -18,4 +18,7 @@ build/
 *.iws
 .idea/
 
+
+/.gradle
+
 /bin
