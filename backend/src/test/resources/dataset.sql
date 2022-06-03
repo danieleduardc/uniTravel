@@ -5,13 +5,13 @@ insert into cliente values ("126","daniel@email.com","daniel","qwe4",3);
 insert into cliente values ("127","karen@gmail.com","karen","qwe5",5);
 
 insert into cliente_telefonos values ("123","1234567");
-insert into cliente_telefonos values ("125","1234567");
-insert into cliente_telefonos values ("124","2345678");
-insert into cliente_telefonos values ("125","5456789");
-insert into cliente_telefonos values ("126","988555");
-insert into cliente_telefonos values ("127","8895552");
+insert into cliente_telefonos values ("124","1234567");
+insert into cliente_telefonos values ("125","2345678");
+insert into cliente_telefonos values ("126","5456789");
+insert into cliente_telefonos values ("127","988555");
 
-insert into administrador_hotel values ("5455", "admin1@gmail.com", "Admin 1","sdh728");
+
+insert into administrador_hotel values ("5455", "admin1@gmail.com", "Admin","sdh728");
 insert into administrador_hotel values ("5456", "admin2@gmail.com", "Admin 2","sdh722");
 
 insert into ciudad values (1, "Armenia", "http://www.nuestro.cl/wp-content/uploads/2018/10/Colombia-Travel-%E2%80%93-City-of-Armenia.jpg");
@@ -51,6 +51,14 @@ insert into caracteristica values (6, "aire acondicionado","2");
 insert into caracteristica values (7, "tv","2");
 insert into caracteristica values (8, "cocina","2");
 
+insert into hotel_caracteristicas values (1, 1);
+insert into hotel_caracteristicas values (1, 2);
+insert into hotel_caracteristicas values (1, 3);
+insert into hotel_caracteristicas values (2, 1);
+insert into hotel_caracteristicas values (2, 2);
+insert into hotel_caracteristicas values (2, 4);
+insert into hotel_caracteristicas values (3, 3);
+
 insert into habitacion_caracteristicas values (101, 1);
 insert into habitacion_caracteristicas values (101, 2);
 insert into habitacion_caracteristicas values (101, 3);
@@ -73,17 +81,17 @@ insert into reserva values (1,"2","confirmada","2022-09-10","2022-09-05","2022-0
 insert into reserva values (2,"3","confirmada","2022-10-12","2022-10-05","2022-09-16",350000,"124");
 insert into reserva values (3,"2","confirmada","2022-11-10","2022-11-05","2022-10-01",450000,"123");
 
-insert into reserva_habitacion values (1, 70000, 1, 1);
-insert into reserva_habitacion values (5, 60000, 1, 1);
-insert into reserva_habitacion values (4, 30000, 2, 3);
-insert into reserva_habitacion values (2, 90000, 3, 2);
+insert into reserva_habitacion values (1, 70000, 101, 1);
+insert into reserva_habitacion values (5, 60000, 102, 1);
+insert into reserva_habitacion values (4, 30000, 201, 3);
+insert into reserva_habitacion values (2, 90000, 302, 2);
 
 insert into vuelo values ("A324","avianca","programado", 1,2);
-insert into vuelo values ("A325","vivaAir","comfirmado", 1,3);
+insert into vuelo values ("A325","vivaAir","comfirmado", 3,5);
 
 insert into silla values (1,"IZ23",125000,"A324");
 insert into silla values (2,"DR23",230000,"A325");
 
-insert into reserva_silla values (01, 125000,1,1);
-insert into reserva_silla values (01, 230000,2,2);
+insert into reserva_silla values (4, 125000,1,1);
+insert into reserva_silla values (3, 230000,2,2);
 
