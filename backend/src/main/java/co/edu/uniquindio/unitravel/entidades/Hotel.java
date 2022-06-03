@@ -1,6 +1,8 @@
 package co.edu.uniquindio.unitravel.entidades;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.PositiveOrZero;
@@ -29,7 +31,11 @@ public class Hotel implements Serializable {
     @Column(nullable = false, length = 50)
     private String telefono;
 
+    @Lob
+    private String descripcion;
+
     @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> fotos;
 
     @PositiveOrZero
@@ -47,12 +53,13 @@ public class Hotel implements Serializable {
     private List<Habitacion>habitaciones;
 
     @ToString.Exclude
-    @ManyToMany
+    @OneToMany(mappedBy = "hotel")
     private List<Comentario> comentarios;
 
     @ToString.Exclude
     @ManyToMany
     private List<Caracteristica> caracteristicas;
+
 
 
     public Hotel(int codigo, String nombre, String direccion, String telefono, int numeroEstrellas) {
@@ -62,5 +69,13 @@ public class Hotel implements Serializable {
         this.telefono = telefono;
         this.numeroEstrellas = numeroEstrellas;
     }
+
+    public String getImagenPrincipal(){
+        if(fotos != null && !fotos.isEmpty()){
+            return fotos.get(0);
+        }
+        return "default.jpg";
+    }
+
 
 }

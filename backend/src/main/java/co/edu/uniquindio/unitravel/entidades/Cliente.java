@@ -18,6 +18,7 @@ import java.util.List;
 public class Cliente extends Persona implements Serializable {
 
     @ElementCollection
+
     private List<String> telefonos;
 
     @OneToMany(mappedBy = "cliente")

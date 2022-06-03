@@ -17,7 +17,8 @@ public class Silla implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int codigo;
 
     @Column(nullable = false)
     private String posicion;
@@ -33,7 +34,7 @@ public class Silla implements Serializable {
     @ManyToOne
     private Vuelo vuelo;
 
-    public Silla(String codigo, String posicion, long precio) {
+    public Silla(Integer codigo, String posicion, long precio) {
         this.codigo = codigo;
         this.posicion = posicion;
         this.precio = precio;

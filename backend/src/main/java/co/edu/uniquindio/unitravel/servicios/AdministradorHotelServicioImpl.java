@@ -79,7 +79,7 @@ public class AdministradorHotelServicioImpl implements  AdministradorHotelServic
 
     @Override
     public Hotel obtenerHotel(Integer codigoHotel) throws Exception {
-        return null;
+        return hotelRepo.findById(codigoHotel).orElse(null);
     }
 
     @Override

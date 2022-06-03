@@ -23,6 +23,9 @@ public class Ciudad implements Serializable {
     @Column(nullable = false)
     private String nombre;
 
+    @Column(nullable = false)
+    private String urlImagen;
+
     @ToString.Exclude
     @OneToMany(mappedBy = "ciudad")
     private List<Cliente> clientes;
