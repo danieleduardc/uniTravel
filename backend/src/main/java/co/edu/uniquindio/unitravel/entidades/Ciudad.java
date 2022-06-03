@@ -24,7 +24,6 @@ public class Ciudad implements Serializable {
     private String nombre;
 
     @Lob
-    @Column(nullable = false)
     private String urlImagen;
 
     @ToString.Exclude

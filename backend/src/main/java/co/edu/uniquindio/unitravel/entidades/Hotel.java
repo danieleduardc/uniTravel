@@ -74,7 +74,7 @@ public class Hotel implements Serializable {
         if(fotos != null && !fotos.isEmpty()){
             return fotos.get(0);
         }
-        return "default.jpg";
+        return "default.png";
     }
 
 

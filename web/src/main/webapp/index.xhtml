@@ -80,18 +80,23 @@
         </div>
     </div>
 
-    <!--        <div class="fondo-c p-5">-->
+
     <div id="contenido">
+        <div class="fondo-c p-5">
+        <h3>Hoteles por ciudad</h3>
 
-        <p> lista Ciudades</p>
-
-        <p:carousel value="#{inicioBean.ciudades}" var="ciudad" numVisible="3" circular="true" autoplayInterval="2000">
-            <div class="card m-5 item-ciudad">
-                <p>#{ciudad.nombre}</p>
+        <p:carousel value="#{inicioBean.ciudades}" var="ciudad" numVisible="3" circular="true" autoplayInterval="3000">
+            <div class="card m-2 item-ciudad">
+                <a href="hotelesDestino.xhtml?ciudad=#{ciudad.codigo}" >
+                    <div class="img-ciudad">
+                        <img src="#{ciudad.urlImagen}"  alt="Imagen ciudad"/>
+                    </div>
+                    <p>#{ciudad.nombre}</p>
+                </a>
             </div>
         </p:carousel>
 
-        <p> Hoteles Recomendados</p>
+        <h3>Hoteles Recomendados</h3>
         <div>
             <h:form>
                 <p:dataView id="lista-hotels" var="hotel" value="#{inicioBean.hoteles}" gridIcon="pi pi-th-large" listIcon="pi pi-bars"  >
@@ -138,7 +143,9 @@
             </h:form>
 
         </div>
+        </div>
     </div>
+
 
     <div class="pie_pagina p-lg-4">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
