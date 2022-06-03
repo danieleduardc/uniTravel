@@ -23,6 +23,7 @@ public class Ciudad implements Serializable {
     @Column(nullable = false)
     private String nombre;
 
+    @Lob
     @Column(nullable = false)
     private String urlImagen;
 

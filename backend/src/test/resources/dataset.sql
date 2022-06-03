@@ -15,10 +15,10 @@ insert into administrador_hotel values ("5455", "admin1@gmail.com", "Admin 1","s
 insert into administrador_hotel values ("5456", "admin2@gmail.com", "Admin 2","sdh722");
 
 insert into ciudad values (1, "Armenia", "http://www.nuestro.cl/wp-content/uploads/2018/10/Colombia-Travel-%E2%80%93-City-of-Armenia.jpg");
-insert into ciudad values (2, "Bogota","https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.rutaschile.com%2FDestino-Detalle.php%3FD%3D109&psig=AOvVaw0nBcPysCJhyUQ7x0JfUZR3&ust=1654295959441000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCOj48-zqj_gCFQAAAAAdAAAAABAr");
-insert into ciudad values (3, "Cali", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.travelers.com.co%2Fes%2Fdestinos-colombia%2Fcali&psig=AOvVaw10JSYY3ecOUEAHquc4ybxB&ust=1654296011679000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCMjIh4Trj_gCFQAAAAAdAAAAABAT");
-insert into ciudad values (4, "Cartagena", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.colombia.com%2Fturismo%2Fsitios-turisticos%2Fcartagena%2F&psig=AOvVaw0EpOnuVlgv9CODhUrnroF4&ust=1654296054595000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCMjl5Znrj_gCFQAAAAAdAAAAABAI");
-insert into ciudad values (5, "Medellin","https://www.google.com/url?sa=i&url=https%3A%2F%2Fforbes.co%2F2021%2F07%2F21%2Factualidad%2Fmedellin-entre-las-seis-metropolis-mas-destacadas-en-el-mundo-por-su-salto-tecnologico%2F&psig=AOvVaw3mJrkRD9EB-iDIAZMnXTow&ust=1654296167972000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPibgM_rj_gCFQAAAAAdAAAAABA3");
+insert into ciudad values (2, "Bogota","");
+insert into ciudad values (3, "Cali", "");
+insert into ciudad values (4, "Cartagena", "");
+insert into ciudad values (5, "Medellin","");
 
 insert into hotel values (1,"Es un edificio planificado y acondicionado para otorgar servicios de alojamiento a las personas y que permite a los visitantes sus desplazamientos", "Calle 123", "Hotel 5H", 5, "87387378", "5455", 4);
 insert into hotel values (2, "Proveen a los huéspedes de servicios adicionales como restaurantes, piscinas y guarderías.","Calle 143", "mocawa", 4, "537387238", "5456", 2);
