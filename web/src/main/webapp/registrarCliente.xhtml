@@ -6,43 +6,48 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Unitravel | Registrar Cliente</title>
-</h:head>
-<h:body>
 
-    <p:panel header="Registrar usuario">
-        <h:form>
-            <h:panelGrid columns="2" cellpadding="5">
+<ui:composition template="/WEB-INF/templane.xhtml">
 
-                <p:outputLabel for="cedula_c" value="Cédula: "/>
-                <p:inputText id="cedula_c" value="#{clienteBean.cliente.cedula}" required="true"/>
+        <ui:define name="title">Registro cliente</ui:define>
+        <ui:define name="content">
 
-                <p:outputLabel for="nombre_cliente" value="Nombre:" />
-                <p:inputText id="nombre_cliente" value="#{clienteBean.cliente.nombre}" required="true"/>
+            <p:panel header="Registrar usuario">
+                <h:form>
+                    <h:panelGrid columns="3" cellpadding="5">
 
-                <p:outputLabel for="email_c" value="Email:" />
-                <p:inputText id="email_c" type="email" value="#{clienteBean.cliente.email}" required="true"/>
+                        <p:outputLabel for="cedula_c" value="Cédula: "/>
+                        <p:inputText id="cedula_c" value="#{clienteBean.cliente.cedula}" required="true"/>
+                        <p:message for="cedula_c" />
 
-                <p:outputLabel for="ciudad_c" value="Ciudad: "/>
-                <p:selectOneMenu id="ciudad_c" value="#{clienteBean.cliente.ciudad}" required="true" converter="#{ciudadConverter}">
-                    required="true" requiredMessage="La ciudad es obligatoria" >
-                    <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true" />
-                    <f:selectItems value="#{clienteBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}" />
-                </p:selectOneMenu>
+                        <p:outputLabel for="nombre_cliente" value="Nombre:" />
+                        <p:inputText id="nombre_cliente" value="#{clienteBean.cliente.nombre}" required="true"/>
+                        <p:message for="nombre_cliente" />
 
+                        <p:outputLabel for="email_c" value="Email:" />
+                        <p:inputText id="email_c" type="email" value="#{clienteBean.cliente.email}" required="true"/>
+                        <p:message for="email_c" />
 
-                <p:outputLabel for="passw" value="password: "/>
-                <p:password id="passw" value="#{clienteBean.cliente.password}" feedback="true" required="true"/>
+                        <p:outputLabel for="ciudad_c" value="Ciudad: "/>
+                        <p:selectOneMenu id="ciudad_c" value="#{clienteBean.cliente.ciudad}" required="true" converter="#{ciudadConverter}">
+                            required="true" requiredMessage="La ciudad es obligatoria" >
+                            <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true" />
+                            <f:selectItems value="#{clienteBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}" />
+                        </p:selectOneMenu>
+                        <p:message for="ciudad_c" />
 
-            </h:panelGrid>
-            <p:commandButton value="Registrar cliente" action="#{clienteBean.registrarCliente()}" update="@form" icon="pi pi-plus" />
+                        <p:outputLabel for="passw" value="password: "/>
+                        <p:password id="passw" value="#{clienteBean.cliente.password}" feedback="true" required="true"/>
+                        <p:message for="passw" />
 
-            <p:growl showDetail="true" />
+                    </h:panelGrid>
+                    <p:commandButton value="Registrar cliente" action="#{clienteBean.registrarCliente()}" update="@form" icon="pi pi-plus" />
 
-        </h:form>
-    </p:panel>
-</h:body>
+                    <p:growl for="msj-bean" showDetail="true" />
+
+                </h:form>
+            </p:panel>
+        </ui:define>
+</ui:composition>
+
 </html>

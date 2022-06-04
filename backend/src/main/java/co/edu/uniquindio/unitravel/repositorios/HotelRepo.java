@@ -16,7 +16,7 @@ public interface HotelRepo extends JpaRepository<Hotel, Integer> {
     String obtenerNombreCiudadCodigo(Integer codigo);
 
     @Query ("select h from Hotel h where h.ciudad.nombre =:nombreCiudad")
-    List<Hotel> obtenerHotelesCiudad(String nombreCiudad);
+    List<Hotel> obtenerHotelesCiudadNombre(String nombreCiudad);
 
     @Query ("select h.ciudad.nombre, count(h) from Hotel h group by h.ciudad")
     List< Object[] > listarHotelesCiudad();
@@ -38,6 +38,11 @@ public interface HotelRepo extends JpaRepository<Hotel, Integer> {
 
     @Query("select h from Hotel h join h.habitaciones hh where hh.precio between :precioMin and :precioMax and hh.capacidad <=:capacidad")
     List<Hotel> listaHotelesRangoPrecio(float precioMin, float precioMax, int capacidad);
+
+    @Query ("select h from Hotel h where h.ciudad.codigo = :codigoCiudad")
+    List<Hotel> obtenerHotelesCiudad (Integer codigoCiudad);
+
+
 
 
 }

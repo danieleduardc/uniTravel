@@ -4,11 +4,11 @@ insert into ciudad values (3, "Cartagena", "https://cdn.colombia.com/images/v2/t
 insert into ciudad values (4, "Medellin","https://cdn.forbes.co/2020/09/Medell%C3%ADn-foto-ProColombia.jpg");
 insert into ciudad values (5, "Cali", "https://upload.wikimedia.org/wikipedia/commons/4/4e/Santiago_de_Cali.jpg");
 
-insert into cliente values ("123","julia@gmail.com","julia","qwe1",1);
-insert into cliente values ("124","pedro@gmail.com","pedro","qwe2",2);
-insert into cliente values ("125","luisa@gmail.com","luisa","qwe3",4);
-insert into cliente values ("126","daniel@email.com","daniel","qwe4",3);
-insert into cliente values ("127","karen@gmail.com","karen","qwe5",5);
+insert into cliente values ("123","julia@gmail.com","julia","GN8CYrWCS/3xsv16RHD4YQw3h6VeJzutXs6eYcOPcP7gDMWGjCDAIz7wHUvnUQqu",1);
+insert into cliente values ("124","pedro@gmail.com","pedro","GN8CYrWCS/3xsv16RHD4YQw3h6VeJzutXs6eYcOPcP7gDMWGjCDAIz7wHUvnUQqu",2);
+insert into cliente values ("125","luisa@gmail.com","luisa","GN8CYrWCS/3xsv16RHD4YQw3h6VeJzutXs6eYcOPcP7gDMWGjCDAIz7wHUvnUQqu",4);
+insert into cliente values ("126","daniel@email.com","daniel","GN8CYrWCS/3xsv16RHD4YQw3h6VeJzutXs6eYcOPcP7gDMWGjCDAIz7wHUvnUQqu",3);
+insert into cliente values ("127","karen@gmail.com","karen","GN8CYrWCS/3xsv16RHD4YQw3h6VeJzutXs6eYcOPcP7gDMWGjCDAIz7wHUvnUQqu",5);
 
 insert into cliente_telefonos values ("123","1234567");
 insert into cliente_telefonos values ("124","1234567");
@@ -16,8 +16,8 @@ insert into cliente_telefonos values ("125","2345678");
 insert into cliente_telefonos values ("126","5456789");
 insert into cliente_telefonos values ("127","988555");
 
-insert into administrador_hotel values ("5455", "admin1@gmail.com", "Admin","sdh728");
-insert into administrador_hotel values ("5456", "admin2@gmail.com", "Admin 2","sdh722");
+insert into administrador_hotel values ("5455", "admin1@gmail.com", "Admin","GN8CYrWCS/3xsv16RHD4YQw3h6VeJzutXs6eYcOPcP7gDMWGjCDAIz7wHUvnUQqu");
+insert into administrador_hotel values ("5456", "admin2@gmail.com", "Admin 2","GN8CYrWCS/3xsv16RHD4YQw3h6VeJzutXs6eYcOPcP7gDMWGjCDAIz7wHUvnUQqu");
 
 insert into hotel values (1,"Servicios de alojamiento a los visitantes para su conford", "Calle 123", "Hotel 5H", 5, "87387378", "5455", 4);
 insert into hotel values (2, "Proveen a los huéspedes de servicios de piscinas y guarderías","Calle 143", "mocawa", 4, "537387238", "5456", 2);
@@ -83,11 +83,12 @@ insert into reserva values (3,"2","confirmada","2022-11-10","2022-11-05","2022-1
 insert into reserva_habitacion values (1, 70000, 101, 1);
 insert into reserva_habitacion values (5, 60000, 102, 1);
 
-insert into vuelo values ("A324","avianca","programado", 1,2);
-insert into vuelo values ("A325","vivaAir","comfirmado", 3,5);
+insert into vuelo values (1,"avianca","programado", 1,2);
+insert into vuelo values (2,"vivaAir","comfirmado", 3,5);
 
-insert into silla values (1,"IZ23",125000,"A324");
-insert into silla values (2,"DR23",230000,"A325");
+insert into silla values (1, 0, "A2", 100000, 1);
+insert into silla values (2, 0, "B3", 100000, 2);
+
 
 
 

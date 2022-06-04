@@ -32,14 +32,23 @@ public class busquedaBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        if (busquedaParams != null && !busquedaParams.isEmpty()) {
-            hoteles = clienteServicio.buscarHotelesPorNombre(busquedaParams);
-        }else {
-            hoteles = new ArrayList<>();
-        }
+
+        hoteles = new ArrayList<>();
+       try {
+           if (busquedaParams != null && !busquedaParams.isEmpty()) {
+               hoteles = clienteServicio.buscarHotelesPorNombre(busquedaParams);
+           }
+       }catch (Exception e) {
+           e.printStackTrace();
+       }
     }
     public String buscar(){
         return "resultadosBusqueda?faces-redirect=true&amp;busqueda="+busqueda;
+    }
+
+    public String irDetalleHotel(String codigoHotel){
+        System.out.println("codigoHotel: "+codigoHotel);
+        return "detalle_hotel?faces-redirect=true&amp;hotel_id="+codigoHotel;
     }
 
 }

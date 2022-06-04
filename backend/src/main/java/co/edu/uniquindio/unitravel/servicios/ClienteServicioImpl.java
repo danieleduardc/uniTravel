@@ -2,6 +2,7 @@ package co.edu.uniquindio.unitravel.servicios;
 
 import co.edu.uniquindio.unitravel.entidades.*;
 import co.edu.uniquindio.unitravel.repositorios.*;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +18,6 @@ public class ClienteServicioImpl implements ClienteServicio {
     private EmailServices emailServices;
 
 
-
-
     private ClienteServicioImpl(ClienteRepo clienteRepo, ComentarioRepo comentarioRepo, ReservaRepo reservaRepo,
                                 HotelRepo hotelRepo, EmailServices emailServices) {
         this.clienteRepo = clienteRepo;
@@ -29,18 +28,24 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
-    public Cliente registrarCliente(Cliente u) throws Exception {
-        Cliente buscado = obtenerCliente(u.getCedula());
-        if (buscado != null) {
-            throw new Exception("El usuario ya existe");
+    public Cliente registrarCliente(Cliente cliente)  throws Exception{
+
+        Cliente clienteBuscado = clienteRepo.findById(cliente.getCedula()).orElse(null);
+
+        if(clienteBuscado != null){
+            throw new Exception("El cliente ya existe");
         }
 
-        Cliente clienteEmail = buscarEmail(u.getEmail());
-        if (clienteEmail != null) {
-            throw new Exception("El email ya esta registrado");
+        Cliente clienteEmail = clienteRepo.findByEmail(cliente.getEmail()).orElse(null);
+
+        if(clienteEmail != null){
+            throw new Exception("Ya existe alguien usando este correo");
         }
 
-        return clienteRepo.save(u);
+        StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+        cliente.setPassword( passwordEncryptor.encryptPassword( cliente.getPassword() ) );
+
+        return clienteRepo.save(cliente);
     }
 
     public Cliente buscarEmail(String email) {
@@ -86,16 +91,73 @@ public class ClienteServicioImpl implements ClienteServicio {
     @Override
     public Reserva registrarReserva(Reserva reserva) throws Exception {
 
-        List<ReservaHabitacion> habitaciones = reserva.getReservaHabitaciones();
-
-        for(ReservaHabitacion rh:habitaciones){
-            // Validar que las habitaciones estén disponibles
+        if(reserva == null){
+            throw new Exception("Reserva vacia, verifique la informacion");
         }
-            // Validar disponibilidad de los vuelos,aignar la silla aleatoriamente
 
-        return reservaRepo.save(reserva);
+        //Revisa que las habitaciones esten disponibles
+        if (reserva.getReservaHabitaciones() == null){
+            throw new Exception("No hay habitaciones disponibles");
+        }
+        for (int i = 0; i < reserva.getReservaHabitaciones().size(); i++) {
+            ReservaHabitacion habitacion = reserva.getReservaHabitaciones().get(i);
+
+            if(!revisarHabitacionDisponible(habitacion)){
+                if (!revisarHabitacionReservadaSegunFecha(reserva, habitacion)) {
+                    throw new Exception("La habitacion con codigo: " + habitacion.getCodigo() + ", se encuentra ocupada");
+                }
+            }
+        }
+        //Revisa que las sillas esten disponibles
+        for (int i = 0; i < reserva.getReservaSillas().size(); i++) {
+            ReservaSilla silla = reserva.getReservaSillas().get(i);
+            Vuelo vuelo = silla.getSilla().getVuelo();
+            if(!sillaDisponible(silla, vuelo)){
+                throw new Exception("La silla: " + silla.getCodigo() + ", no esta disponible");
+            }
+        }
+
+        return reserva;
     }
 
+    private boolean revisarHabitacionDisponible(ReservaHabitacion habitacionActual) {
+
+        List<ReservaHabitacion> habitacionesReservadas = reservaRepo.habitacionesReservadas();
+        for(ReservaHabitacion habitacion : habitacionesReservadas){
+            if(habitacion.getCodigo() == habitacionActual.getCodigo()){
+                return false;
+            }
+        }
+        return true;
+    }
+    private boolean revisarHabitacionReservadaSegunFecha(Reserva reserva, ReservaHabitacion habitaconA) {
+
+        List<Reserva> reservasSegunFecha = reservaRepo.devolverReservaIntervaloFecha(reserva.getFechaInicio(), reserva.getFechaFin());
+        for(Reserva reservas : reservasSegunFecha){
+            List<ReservaHabitacion> habitacionesReservadas = reservas.getReservaHabitaciones();
+            for(int i = 0; i < habitacionesReservadas.size(); i++) {
+                ReservaHabitacion habitacion = habitacionesReservadas.get(i);
+                if(habitacion.getCodigo() == habitaconA.getCodigo()){
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+
+    private boolean sillaDisponible(ReservaSilla sillaReservada, Vuelo vuelo) {
+
+        List<Silla> sillas = vuelo.getSillas();
+        for (Silla silla : sillas){
+            if(silla.getCodigo() == sillaReservada.getCodigo()){
+                if(silla.getEstadoSilla() == EstadoSilla.DISPONIBLE){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     @Override
     public List<Object[]> listarReservas(String emailCliente) {
         return reservaRepo.obtenerReservaClienteEmail(emailCliente);
@@ -190,6 +252,15 @@ public class ClienteServicioImpl implements ClienteServicio {
         return hotelRepo.findAll();
     }
 
+//    @Override
+//    public List<Hotel> ListarHotelsPorCaracteristica(String caracteristica) {
+//        return hotelRepo.listarHotelesPorCaracteristica(caracteristica);
+//    }
+
+    @Override
+    public List<Hotel> obtenerHotelCiudad(int codiogCiudad) {
+        return hotelRepo.obtenerHotelesCiudad(codiogCiudad);
+    }
 
 
 }

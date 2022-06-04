@@ -47,4 +47,7 @@ public interface ClienteServicio {
 
         List<Hotel> listarHoteles();
 
+//        List<Hotel> ListarHotelsPorCaracteristica(String caracteristica);
+
+        List<Hotel> obtenerHotelCiudad(int codiogCiudad);
 }

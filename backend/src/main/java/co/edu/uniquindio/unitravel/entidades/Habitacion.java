@@ -3,10 +3,14 @@ package co.edu.uniquindio.unitravel.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @NoArgsConstructor
@@ -18,11 +22,12 @@ public class Habitacion implements Serializable {
     @Id
     @PositiveOrZero
     @EqualsAndHashCode.Include
+    @Size(max = 10000)
     private int numero;
 
     @Column(nullable = false)
     @Positive
-    private int precio;
+    private long precio;
 
     @Column(nullable = false)
     @PositiveOrZero
@@ -44,5 +49,18 @@ public class Habitacion implements Serializable {
     @ToString.Exclude
     @OneToMany(mappedBy = "habitacion")
     private List<ReservaHabitacion> reservaHabitaciones;
+
+    public String getImagenPrincipal(){
+        if(fotos != null && !fotos.isEmpty()){
+            return fotos.get(0);
+        }
+        return "image.png";
+    }
+
+    public String formatearDinerro(){
+        Locale locale = new Locale("es", "CO");
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+        return currencyFormatter.format(precio);
+    }
 
 }

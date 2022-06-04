@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class Ciudad implements Serializable {
     private int codigo;
 
     @Column(nullable = false)
+    @NotBlank(message = "El nombre de la ciudad es obligatorio")
     private String nombre;
 
     @Lob

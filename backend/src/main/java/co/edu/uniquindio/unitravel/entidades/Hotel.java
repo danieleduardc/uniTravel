@@ -5,9 +5,11 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @NoArgsConstructor
@@ -23,12 +25,18 @@ public class Hotel implements Serializable {
     private int codigo;
 
     @Column(nullable = false, length = 200)
+    @Size(min = 1, max = 200)
+    @NotBlank(message = "El nombre del hotel no puede estar vacío")
     private String nombre;
 
     @Column(nullable = false, length = 150)
+    @Size(max = 150)
+    @NotBlank(message = "La dirección del hotel no puede estar vacía")
     private String direccion;
 
     @Column(nullable = false, length = 50)
+    @Size(max = 50)
+    @NotBlank(message = "El teléfono del hotel no puede estar vacío")
     private String telefono;
 
     @Lob
@@ -38,7 +46,8 @@ public class Hotel implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> fotos;
 
-    @PositiveOrZero
+    @Positive
+    @Max(5)
     @Column(nullable = false)
     private int numeroEstrellas;
 
@@ -76,6 +85,5 @@ public class Hotel implements Serializable {
         }
         return "default.png";
     }
-
 
 }

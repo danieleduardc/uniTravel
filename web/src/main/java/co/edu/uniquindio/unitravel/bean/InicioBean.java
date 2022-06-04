@@ -30,7 +30,6 @@ public class InicioBean implements Serializable {
 
     @PostConstruct
     public void inicializar() {
-        System.out.println("Inicializando");
         hoteles = clienteServicio.listarHoteles();
         ciudades = unitravelServicio.ListarCiudades();
     }

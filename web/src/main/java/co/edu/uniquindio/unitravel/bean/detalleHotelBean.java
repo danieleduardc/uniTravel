@@ -1,8 +1,6 @@
 package co.edu.uniquindio.unitravel.bean;
 
-import co.edu.uniquindio.unitravel.entidades.Cliente;
-import co.edu.uniquindio.unitravel.entidades.Comentario;
-import co.edu.uniquindio.unitravel.entidades.Hotel;
+import co.edu.uniquindio.unitravel.entidades.*;
 import co.edu.uniquindio.unitravel.servicios.ClienteServicio;
 import co.edu.uniquindio.unitravel.servicios.UnitravelServicio;
 import lombok.Getter;
@@ -26,41 +24,51 @@ public class detalleHotelBean implements Serializable {
     private Hotel hotel;
     @Autowired
     private UnitravelServicio unitravelServicio;
-
     @Value("#{param['hotel_id']}")
     private String codigoHotel;
-
     @Autowired
     private ClienteServicio clienteServicio;
-
     @Getter @Setter
     private Comentario nuevoComentario;
-
     @Getter @Setter
     private List<Comentario> comentarios;
+    @Getter @Setter
+    private AdministradorHotel administradorHotel;
+
+    @Getter @Setter
+    private Integer calificacionPromedio;
+
+    @Value(value = "#{seguridadBean.persona}")
+    private Persona personaSecion;
 
     @PostConstruct
-    public void init() {
+    public void inicializar(){
         nuevoComentario = new Comentario();
-       comentarios = new ArrayList<>();
-        if(codigoHotel != null && !codigoHotel.isEmpty()) {
-            try {
+        comentarios = new ArrayList<Comentario>();
+
+        if(codigoHotel != null && !codigoHotel.isEmpty()){
+            try{
                 hotel = unitravelServicio.obtenerHotel(Integer.parseInt(codigoHotel));
+                administradorHotel = hotel.getAdministradorHotel();
                 comentarios = hotel.getComentarios();
-            } catch (Exception e) {
+            }catch(Exception e){
                 e.printStackTrace();
             }
-        }
 
+        }
     }
+
 
     public void crearComentario(){
         try {
-            nuevoComentario.setHotel(hotel);
-            nuevoComentario.setCliente(clienteServicio.obtenerCliente("112"));
-            unitravelServicio.crearComentario(nuevoComentario);
-            comentarios.add(nuevoComentario);
-            nuevoComentario = new Comentario();
+            if(personaSecion != null){
+                nuevoComentario.setHotel(hotel);
+                nuevoComentario.setCliente((Cliente) personaSecion);
+                unitravelServicio.crearComentario(nuevoComentario);
+                comentarios.add(nuevoComentario);
+                nuevoComentario = new Comentario();
+            }
+
         }catch (Exception e){
             e.printStackTrace();
         }

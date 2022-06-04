@@ -8,13 +8,40 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="/WEB-INF/templane.xhtml">
-
-    <ui:define name="title">Resultado busqueda</ui:define>
+    <ui:define name="title">Lista Hoteles</ui:define>
     <ui:define name="content">
 
-        <h3 class="m-2"> Resultados de busqueda</h3>
+        <div id="contenido">
+            <h3>Listado Todos los Hoteles</h3>
             <h:form>
-                <p:dataView id="lista-hotels" var="hotel" value="#{busquedaBean.hoteles}" listIcon="pi pi-bars" gridIcon="pi pi-th-large" >
+                <p:dataView id="lista-hotels" var="hotel" value="#{inicioBean.hoteles}" gridIcon="pi pi-th-large" listIcon="pi pi-bars"  >
+
+                    <p:dataViewListItem>
+                        <div class="row d-flex m-5" >
+                            <div class="col-lg-2 col-md-1" style="text-align: center" >
+                                <img src="/uploads/#{hotel.imagenPrincipal}" class="imagen-hotel" alt="imagen" />
+                            </div>
+                            <div class="col-lg-8 col-md-1 align-self-center" >
+                                <p:outputPanel>
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputText value="Nombre:" />
+                                        <h:outputText value="#{hotel.nombre}" style="font-weight: bold" />
+                                        <h:outputText value="Ciudad:" />
+                                        <h:outputText value="#{hotel.ciudad.nombre}" />
+                                        <h:outputText value="Características:" />
+                                        <p:repeat value="#{hotel.caracteristicas}" var="car" >
+                                            <p:chip label="#{car.nombre}" styleClass="me-2"/>
+                                        </p:repeat>
+                                        <h:outputText value="Descripción:" />
+                                        <h:outputText value="#{hotel.descripcion}" />
+                                    </h:panelGrid>
+                                </p:outputPanel>
+                            </div>
+                            <div class="col-lg-2 col-md-1 align-self-center" >
+                                <p:commandButton value="Ver detalle" action="#{inicioBean.irDetalleHotel(hotel.codigo)}" styleClass="ui-button-raised" icon="pi pi-arrow-right" iconPos="right" />
+                            </div>
+                        </div>
+                    </p:dataViewListItem>
 
                     <p:dataViewGridItem>
                         <div class="card" >
@@ -27,39 +54,9 @@
                             </div>
                         </div>
                     </p:dataViewGridItem>
-
-                    <p:dataViewListItem>
-                        <div class="row d-flex m-5" >
-                            <div class="col-lg-2 col-md-1" style="text-align: center" >
-                                <img src="/uploads/#{hotel.imagenPrincipal}" class="imagen-hotel" alt="imagen" />
-                            </div>
-                            <div class="col-lg-8 col-md-1 align-self-center" >
-                                <p:outputPanel>
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <h:outputText value="Nombre:" />
-                                        <h:outputText value="#{hotel.nombre}" style="font-weight: bold" />
-
-                                        <h:outputText value="Ciudad:" />
-                                        <h:outputText value="#{hotel.ciudad.nombre}" />
-                                        <h:outputText value="Características:" />
-
-                                        <p:repeat value="#{hotel.caracteristicas}" var="car" >
-                                            <p:chip label="#{car.nombre}" styleClass="me-2"/>
-                                        </p:repeat>
-
-                                        <h:outputText value="Descripción:" />
-                                        <h:outputText value="#{hotel.descripcion}" />
-                                    </h:panelGrid>
-                                </p:outputPanel>
-                            </div>
-                            <div class="col-lg-2 col-md-1 align-self-center" >
-                                <p:commandButton value="Ver detalle" action="#{inicioBean.irDetalleHotel(hotel.codigo)}" styleClass="ui-button-raised" icon="pi pi-arrow-right" iconPos="right" />
-                            </div>
-                        </div>
-                    </p:dataViewListItem>
                 </p:dataView>
             </h:form>
+        </div>
     </ui:define>
-
 </ui:composition>
 </html>

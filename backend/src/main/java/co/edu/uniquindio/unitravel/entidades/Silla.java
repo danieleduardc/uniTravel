@@ -3,6 +3,7 @@ package co.edu.uniquindio.unitravel.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 import java.util.List;
@@ -20,7 +21,10 @@ public class Silla implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
+    private EstadoSilla estadoSilla;
+
     @Column(nullable = false)
+    @NotBlank(message = "La posicion no puede estar vacío")
     private String posicion;
 
     @PositiveOrZero
@@ -40,3 +44,4 @@ public class Silla implements Serializable {
         this.precio = precio;
     }
 }
+

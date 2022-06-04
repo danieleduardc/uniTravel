@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 
@@ -19,7 +20,7 @@ public class ReservaHabitacion implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo;
+    private int codigo;
 
     @Column(nullable = false)
     @PositiveOrZero
@@ -31,7 +32,7 @@ public class ReservaHabitacion implements Serializable {
     @ManyToOne
     private Reserva reserva;
 
-    public ReservaHabitacion(Long codigo, long precio) {
+    public ReservaHabitacion(int codigo, long precio) {
         this.codigo = codigo;
         this.precio = precio;
     }

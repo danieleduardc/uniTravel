@@ -2,12 +2,12 @@ package co.edu.uniquindio.unitravel.servicios;
 
 import co.edu.uniquindio.unitravel.entidades.*;
 import co.edu.uniquindio.unitravel.repositorios.*;
+import org.jasypt.exceptions.EncryptionOperationNotPossibleException;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UnitravelServicioImpl implements UnitravelServicio {
@@ -22,9 +22,14 @@ public class UnitravelServicioImpl implements UnitravelServicio {
     private CamaRepo camaRepo;
     @Autowired
     private HotelRepo hotelRepo;
-
     @Autowired
     private ComentarioRepo comentarioRepo;
+
+    @Autowired
+    private AdminHotelRepo adminHotelRepo;
+
+    @Autowired
+    private AdminRepo adminRepo;
 
     @Override
     public List<Ciudad> ListarCiudades() {
@@ -34,16 +39,6 @@ public class UnitravelServicioImpl implements UnitravelServicio {
     @Override
     public Ciudad obtenerCiudad(Integer codigoCiudad) throws Exception {
         return ciudadRepo.findById(codigoCiudad).orElse(null);
-    }
-
-    @Override
-    public Cliente validarLogin(String email, String password) throws Exception {
-        Optional<Cliente> cliente = clienteRepo.findByEmailAndPassword(email, password);
-
-        if (cliente.isEmpty()) {
-            throw new Exception("los datos son incorrectos");
-        }
-        return cliente.get();
     }
 
     @Override
@@ -81,6 +76,48 @@ public class UnitravelServicioImpl implements UnitravelServicio {
     public void crearComentario(Comentario comentario) throws Exception {
         comentario.setFechaCalificacion(LocalDateTime.now());
         comentarioRepo.save(comentario);
+    }
+
+    @Override
+    public Persona validarLogin(String correo, String password) throws Exception {
+
+        try {
+            StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+            Persona cliente = clienteRepo.findByEmail(correo).orElse(null);
+
+            if (cliente == null) {
+                cliente = adminHotelRepo.findByEmail(correo).orElse(null);
+            } else {
+                if (!passwordEncryptor.checkPassword(password, cliente.getPassword())) {
+                    throw new Exception("Contraseña incorrecta");
+                } else {
+                    return cliente;
+                }
+            }
+
+            if (cliente == null) {
+                cliente = adminRepo.findByEmail(correo).orElse(null);
+            } else {
+                if (!passwordEncryptor.checkPassword(password, cliente.getPassword())) {
+                    throw new Exception("Contraseña incorrecta");
+                } else {
+                    return cliente;
+                }
+            }
+
+            if (cliente == null) {
+                throw new Exception("El correo o la contraseña son incorrectos");
+            } else {
+                if (!passwordEncryptor.checkPassword(password, cliente.getPassword())) {
+                    throw new Exception("Contraseña incorrecta");
+                } else {
+                    return cliente;
+                }
+            }
+        } catch (EncryptionOperationNotPossibleException e) {
+            throw new Exception("Contraseña es incorrecta");
+
+        }
     }
 
 }

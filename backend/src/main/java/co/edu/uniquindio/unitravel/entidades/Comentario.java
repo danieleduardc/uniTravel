@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
@@ -27,6 +28,7 @@ public class Comentario implements Serializable {
 
     @Lob
     @Column(nullable = false)
+    @NotBlank(message = "El mensaje no puede estar vacío")
     private String mensaje;
 
     @Positive

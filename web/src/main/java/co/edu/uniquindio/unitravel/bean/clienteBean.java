@@ -26,7 +26,6 @@ public class clienteBean implements Serializable {
     @Autowired
     private UnitravelServicio unitravelServicio;
 
-
     @Getter @Setter
     private Cliente cliente;
 
@@ -44,11 +43,11 @@ public class clienteBean implements Serializable {
             clienteServicio.registrarCliente(cliente);
 
             FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Registro exitoso");
-            FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+            FacesContext.getCurrentInstance().addMessage("msj-bean" , facesMsg);
 
         } catch (Exception e) {
             FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+            FacesContext.getCurrentInstance().addMessage("msj-bean", facesMsg);
             throw new RuntimeException(e);
         }
     }

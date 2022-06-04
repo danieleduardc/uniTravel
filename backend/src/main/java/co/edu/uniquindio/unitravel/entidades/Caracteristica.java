@@ -3,6 +3,7 @@ package co.edu.uniquindio.unitravel.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class Caracteristica implements Serializable {
     private String tipo;
 
     @Column(nullable = false, length = 200)
+    @NotBlank(message = "El nombre de la característica es obligatorio")
     private String nombre;
 
     @ManyToMany(mappedBy = "caracteristicas")
