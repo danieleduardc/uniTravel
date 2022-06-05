@@ -71,9 +71,9 @@ public class hotelBean implements Serializable {
                 if (imagenesHotel.size() > 0) {
 
                     if (habitaciones.size() > 0) {
+
                         hotel.setAdministradorHotel((AdministradorHotel) personaSesion);
                         hotel.setFotos(imagenesHotel);
-                        hotel.setCodigo(100);
 
                         Hotel h = administradorHotelServicio.crearHotel(hotel);
 
@@ -86,7 +86,9 @@ public class hotelBean implements Serializable {
                                 throw new RuntimeException(e);
                             }
                         });
-                        return "/admin_hotel/registroExitoso?faces-redirect=true";
+
+                        return "/admin_hotel/registroExitoso?faces-redirect=true&amp;hotel_id="+String.valueOf(hotel.getCodigo());
+
 
                     } else {
                         FacesMessage msj = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Es obligatorio agregar habitaciones");
@@ -140,8 +142,10 @@ public class hotelBean implements Serializable {
         if(!imagenesHabitacion.isEmpty()){
             habitacion.setFotos(imagenesHabitacion);
             habitaciones.add(habitacion);
+
             habitacion = new Habitacion();
             imagenesHabitacion = new ArrayList<>();
+            System.out.println("habitacion agregada");
         }else {
             FacesMessage msj = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "Asigne al menos una Habitación");
             FacesContext.getCurrentInstance().addMessage(null, msj);

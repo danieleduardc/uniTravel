@@ -17,6 +17,9 @@ public class ClienteServicioImpl implements ClienteServicio {
     private HotelRepo hotelRepo;
     private EmailServices emailServices;
 
+    private HabitacionRepo habitacionRepo;
+
+
 
     private ClienteServicioImpl(ClienteRepo clienteRepo, ComentarioRepo comentarioRepo, ReservaRepo reservaRepo,
                                 HotelRepo hotelRepo, EmailServices emailServices) {
@@ -252,15 +255,17 @@ public class ClienteServicioImpl implements ClienteServicio {
         return hotelRepo.findAll();
     }
 
-//    @Override
-//    public List<Hotel> ListarHotelsPorCaracteristica(String caracteristica) {
-//        return hotelRepo.listarHotelesPorCaracteristica(caracteristica);
-//    }
+    @Override
+    public List<Hotel> ListarHotelsPorNumeroEstrellas(Integer numeroEstrellas) {
+        return hotelRepo.listarHotelesPorNumeroEstrellas(numeroEstrellas);
+    }
 
     @Override
     public List<Hotel> obtenerHotelCiudad(int codiogCiudad) {
         return hotelRepo.obtenerHotelesCiudad(codiogCiudad);
     }
+
+
 
 
 }

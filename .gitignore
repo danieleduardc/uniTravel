@@ -18,7 +18,8 @@ build/
 *.iws
 .idea/
 
-
 /.gradle
 
 /bin
+
+.DS_Store

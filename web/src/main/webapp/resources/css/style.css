@@ -51,6 +51,7 @@
   -webkit-box-shadow: 2px 2px 9px -1px #42445A;
   box-shadow: 2px 2px 9px -1px #42445A;
   overflow: hidden;
+
 }
 
 .item-ciudad img{
@@ -99,3 +100,4 @@ body .ui-dataview .ui-dataview-header, .ui-dataview-row.ui-g{
 .ui-linkbutton a{
   text-decoration: none;
 }
+

@@ -24,10 +24,13 @@
                 </div>
             </p:carousel>
 
-            <h3>Hoteles Recomendados</h3>
             <div>
                 <h:form>
-                    <p:dataView id="lista-hotels" var="hotel" value="#{inicioBean.hoteles}" gridIcon="pi pi-th-large" listIcon="pi pi-bars"  >
+                    <p:dataView id="lista-hotels"  var="hotel" value="#{inicioBean.hotelesRecomendados}" gridIcon="pi pi-th-large" listIcon="pi pi-bars"  >
+
+                        <f:facet name ="header">
+                           <h2 class="m-2">Hoteles Recomendados </h2>
+                        </f:facet>
 
                         <p:dataViewListItem>
                             <div class="row d-flex m-5" >
@@ -41,12 +44,18 @@
                                             <h:outputText value="#{hotel.nombre}" style="font-weight: bold" />
                                             <h:outputText value="Ciudad:" />
                                             <h:outputText value="#{hotel.ciudad.nombre}" />
+
                                             <h:outputText value="Características:" />
                                             <p:repeat value="#{hotel.caracteristicas}" var="car" >
+
                                                 <p:chip label="#{car.nombre}" styleClass="me-2"/>
                                             </p:repeat>
                                             <h:outputText value="Descripción:" />
                                             <h:outputText value="#{hotel.descripcion}" />
+
+                                            <h:outputText value="Numero Estrellas:" />
+                                            <p:rating readonly="true" value="#{hotel.numeroEstrellas}"/>
+
                                         </h:panelGrid>
                                     </p:outputPanel>
                                 </div>

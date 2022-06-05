@@ -64,9 +64,9 @@
                     <br/> <br/>
                     <p:growl for="msj-bean" showDetail="true" />
 
-                    <p:commandButton value="Adiccionar Habitacion" onclick="PF('crear_habi').show()" action="#{hotelBean.RegistrarHotel()}" icon="pi pi-plus-circle"/>
+                    <p:commandButton value="Adiccionar Habitacion" onclick="PF('crear_habi').show()" action="#{hotelBean.registrarHotel()}" icon="pi pi-plus-circle"/>
                     <br/> <br/>
-                    <p:commandButton value="Crear  Hotel" action="#{hotelBean.RegistrarHotel()}" update="@form" icon="pi pi-check-circle"/>
+                    <p:commandButton value="Crear  Hotel" action="#{hotelBean.registrarHotel()}" update="@form" icon="pi pi-check-circle"/>
 
                 </h:form>
 
@@ -111,7 +111,7 @@
                     <br/> <br/>
 
                     <p:growl showDetail="true" />
-                    <p:commandButton value="Crear  Habitacion" action="#{hotelBean.crearHabitacion()}" update="@form" icon="pi pi-check-circle"/>
+                    <p:commandButton value="Crear  Habitacion" action="#{hotelBean.crearHabitacion()}"  update="@form" icon="pi pi-check-circle"/>
                 </h:form>
             </p:dialog>
         </ui:define>

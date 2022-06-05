@@ -19,8 +19,7 @@ public class CaractericasConverter implements Converter<Caracteristica>, Seriali
     public Caracteristica getAsObject(FacesContext context, UIComponent component, String value) {
 
         try {
-            Caracteristica caracteristica = unitravelServicio.obtenerCaracteristicaPorId(Integer.parseInt(value));
-            return caracteristica;
+            return unitravelServicio.obtenerCaracteristicaPorId(Integer.parseInt(value));
         } catch (Exception e) {
             e.printStackTrace();
         }

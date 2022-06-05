@@ -25,4 +25,6 @@ public interface UnitravelServicio {
 
     Persona validarLogin(String correo, String password) throws Exception;
 
+    List<AdministradorHotel> ListarAdministradores();
+
 }

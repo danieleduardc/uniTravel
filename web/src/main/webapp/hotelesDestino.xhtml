@@ -9,12 +9,15 @@
 
 <ui:composition template="/WEB-INF/templane.xhtml">
 
-        <ui:define name="title">Hoteles</ui:define>
+        <ui:define name="title">Hoteles ciudad</ui:define>
         <ui:define name="content">
-            <h3 class="m-2">Hoteles Ciudad</h3>
 
             <h:form>
                 <p:dataView id="lista-h" value="#{destinoHotelBean.hoteles}" var="hotel" listIcon="pi pi-bars" gridIcon="pi pi-th-large">
+
+                    <f:facet name ="header">
+                        <h2 class="m-2">Hoteles de la ciudad </h2>
+                    </f:facet>
 
                     <p:dataViewListItem>
 

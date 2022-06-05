@@ -47,7 +47,7 @@ public class Hotel implements Serializable {
     private List<String> fotos;
 
     @Positive
-    @Max(5)
+    @Max(5) @Min(1)
     @Column(nullable = false)
     private int numeroEstrellas;
 
@@ -63,6 +63,7 @@ public class Hotel implements Serializable {
 
     @ToString.Exclude
     @OneToMany(mappedBy = "hotel")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Comentario> comentarios;
 
     @ToString.Exclude
@@ -85,5 +86,7 @@ public class Hotel implements Serializable {
         }
         return "default.png";
     }
+
+
 
 }

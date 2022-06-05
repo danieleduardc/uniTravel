@@ -22,7 +22,6 @@ public class Habitacion implements Serializable {
     @Id
     @PositiveOrZero
     @EqualsAndHashCode.Include
-    @Size(max = 10000)
     private int numero;
 
     @Column(nullable = false)

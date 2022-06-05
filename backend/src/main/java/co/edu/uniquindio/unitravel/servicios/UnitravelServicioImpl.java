@@ -120,4 +120,11 @@ public class UnitravelServicioImpl implements UnitravelServicio {
         }
     }
 
+    @Override
+    public List<AdministradorHotel> ListarAdministradores() {
+        return adminHotelRepo.findAll();
+    }
+
+
+
 }

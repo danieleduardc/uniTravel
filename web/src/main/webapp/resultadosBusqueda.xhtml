@@ -12,9 +12,12 @@
     <ui:define name="title">Resultado busqueda</ui:define>
     <ui:define name="content">
 
-        <h3 class="m-2"> Resultados de busqueda</h3>
             <h:form>
                 <p:dataView id="lista-hotels" var="hotel" value="#{busquedaBean.hoteles}" listIcon="pi pi-bars" gridIcon="pi pi-th-large" >
+
+                    <f:facet name ="header">
+                        <h2 class="m-2">Resultados de busqueda</h2>
+                    </f:facet>
 
                     <p:dataViewGridItem>
                         <div class="card" >

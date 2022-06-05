@@ -38,6 +38,8 @@ public class detalleHotelBean implements Serializable {
     @Getter @Setter
     private Integer calificacionPromedio;
 
+    List<Habitacion> habitaciones;
+
     @Value(value = "#{seguridadBean.persona}")
     private Persona personaSecion;
 
@@ -58,6 +60,10 @@ public class detalleHotelBean implements Serializable {
         }
     }
 
+//    public void actualizarHabitaciones(){
+//       habitaciones = clienteServicio.obtenerHabitacionesDisponibles(Integer.parseInt(codigoHotel),rangoFechaInterna(0),rangoFechaInterna(1));
+//    }
+
 
     public void crearComentario(){
         try {
@@ -72,6 +78,15 @@ public class detalleHotelBean implements Serializable {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+
+    public Object rangoFechaInterna(Integer i) {
+        return null;
+    }
+
+    public Object getNumeroPersonasInterna() {
+        return null;
     }
 
 

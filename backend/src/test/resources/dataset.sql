@@ -89,6 +89,14 @@ insert into vuelo values (2,"vivaAir","comfirmado", 3,5);
 insert into silla values (1, 0, "A2", 100000, 1);
 insert into silla values (2, 0, "B3", 100000, 2);
 
+insert into aeropuerto values ("A1", "Carrera 1","Aeropuerto el Eden", 1);
+insert into aeropuerto values ("A2", "Carrera 2","Aeropuerto Internacional El Dorado ", 2);
+insert into aeropuerto values ("A3", "Carrera 3","Aeropuerto Matechana", 4);
+
+insert into carro values ("ABC-123", 1, 4, 1, 2019, 250000, 1, "A1");
+insert into carro values ("DEF-456", 1, 4, 1, 2019, 300000, 1, "A2");
+insert into carro values ("GHI-789", 1, 6, 1, 2019, 150000, 1, "A3");
+
 
 
 
