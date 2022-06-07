@@ -40,11 +40,7 @@ public class InicioBean implements Serializable {
     @PostConstruct
     public void inicializar() {
         hoteles = clienteServicio.listarHoteles();
-        try {
-            hotelesRecomendados = clienteServicio.ListarHotelsPorNumeroEstrellas(4);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        hotelesRecomendados = clienteServicio.ListarHotelsPorNumeroEstrellas(5);
         ciudades = unitravelServicio.ListarCiudades();
         administradores = unitravelServicio.ListarAdministradores();
     }

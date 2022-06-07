@@ -28,4 +28,6 @@ public interface AdminHotelRepo extends JpaRepository<AdministradorHotel, String
 
     @Query("select ho.habitaciones from Hotel ho where ho.codigo = :codigoHotel")
     List<Habitacion> listarHabitacionesHotel(Integer codigoHotel);
+
+
 }

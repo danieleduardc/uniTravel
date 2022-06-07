@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
@@ -29,6 +30,13 @@ public class seguridadBean implements Serializable {
     @Getter @Setter
     private int rol;
 
+    @Getter @Setter
+    AdministradorHotel adminH;
+    @PostConstruct
+    public void inicializar() {
+        adminH = new AdministradorHotel();
+    }
+
     @Autowired
     private UnitravelServicio unitravelServicio;
 
@@ -42,6 +50,7 @@ public class seguridadBean implements Serializable {
                 rol = 1;
             }else if(persona instanceof AdministradorHotel){
                 rol = 2;
+                adminH = (AdministradorHotel) persona;
             }else{
                 rol = 3;
         }

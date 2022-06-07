@@ -13,7 +13,7 @@ public interface AdministradorHotelServicio {
 
     void eliminarHotel(Hotel hotel) throws Exception;
 
-    List<Hotel> listarHoteles(String CodigoAdmin) throws Exception;
+    List<Hotel> listarHotelesAdministrador(String CodigoAdmin) throws Exception;
 
     Hotel actualizarHotel(Hotel hotel) throws Exception;
 

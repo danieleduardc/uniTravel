@@ -68,6 +68,7 @@ public class Hotel implements Serializable {
 
     @ToString.Exclude
     @ManyToMany
+    @LazyCollection(org.hibernate.annotations.LazyCollectionOption.FALSE)
     private List<Caracteristica> caracteristicas;
 
 

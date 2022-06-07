@@ -42,7 +42,7 @@ public class AdministradorHotelServicioImpl implements  AdministradorHotelServic
     }
 
     @Override
-    public List<Hotel> listarHoteles(String CodigoAdmin) throws Exception {
+    public List<Hotel> listarHotelesAdministrador(String CodigoAdmin) throws Exception {
         return adminHotelRepo.obtenerHotelesPorAdmin(CodigoAdmin);
     }
 

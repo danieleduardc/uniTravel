@@ -22,21 +22,20 @@ public class adminHotelBean implements Serializable {
     @Autowired
     private AdministradorHotelServicio administradorHotelServicio;
 
-    @Value("#{param['admin']}")
+    @Value("#{param['admin_id']}")
     private String codigoAdmin;
 
     @Getter @Setter
-    private List<Hotel> hoteles;
+    private List<Hotel> hotelesAdmin;
 
     @PostConstruct
     public void init(){
-
-        hoteles = new ArrayList<>();
+        hotelesAdmin = new ArrayList<>();
 
         try{
             if(codigoAdmin != null && !codigoAdmin.isEmpty()) {
-                hoteles = administradorHotelServicio.listarHoteles(codigoAdmin);
-                hoteles.forEach(hotel -> System.out.println(hotel.getNombre()));
+                hotelesAdmin = administradorHotelServicio.listarHotelesAdministrador(codigoAdmin);
+                hotelesAdmin.forEach(hotel -> System.out.println(hotel.getNombre()));
             }
         }catch (Exception e){
             e.printStackTrace();

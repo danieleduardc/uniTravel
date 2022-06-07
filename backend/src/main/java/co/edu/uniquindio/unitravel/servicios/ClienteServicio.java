@@ -47,7 +47,7 @@ public interface ClienteServicio {
 
         List<Hotel> listarHoteles();
 
-        List<Hotel> ListarHotelsPorNumeroEstrellas(Integer numero) throws Exception;
+        List<Hotel> ListarHotelsPorNumeroEstrellas(Integer numero);
 
         List<Hotel> obtenerHotelCiudad(int codiogCiudad);
 
